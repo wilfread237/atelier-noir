@@ -1,0 +1,161 @@
+.studio-setup {
+	max-width: 720px;
+	margin: 2rem auto 4rem;
+	padding: 0 1.5rem;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.studio-setup__hero {
+	margin-bottom: 2rem;
+}
+
+.studio-setup__brand {
+	font-size: 0.7rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: #491F06;
+	margin: 0 0 0.5rem;
+}
+
+.studio-setup h1 {
+	font-size: 1.75rem;
+	font-weight: 600;
+	margin: 0 0 0.75rem;
+	color: #0A0A0A;
+}
+
+.studio-setup__lead {
+	color: #555;
+	line-height: 1.6;
+	margin: 0;
+}
+
+.studio-setup__steps {
+	display: flex;
+	gap: 0.5rem;
+	list-style: none;
+	margin: 0 0 1.5rem;
+	padding: 0;
+	flex-wrap: wrap;
+}
+
+.studio-setup__steps li {
+	font-size: 0.72rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	padding: 0.45rem 0.75rem;
+	border: 1px solid #ddd;
+	color: #888;
+	border-radius: 2px;
+}
+
+.studio-setup__steps li.is-active {
+	border-color: #491F06;
+	color: #491F06;
+	background: rgba(73, 31, 6, 0.06);
+}
+
+.studio-setup__panel {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	padding: 1.75rem 2rem;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.studio-setup__panel h2 {
+	margin-top: 0;
+	font-size: 1.15rem;
+}
+
+.studio-setup__quote {
+	margin-top: 1.25rem;
+	color: #646970;
+	font-size: 13px;
+}
+
+.studio-setup__quote a {
+	color: #491f06;
+	font-weight: 600;
+}
+
+.studio-setup__list {
+	list-style: disc;
+	padding-left: 1.25rem;
+	line-height: 1.7;
+}
+
+.studio-setup__plugins {
+	list-style: none;
+	padding: 0;
+	margin: 1rem 0 1.5rem;
+}
+
+.studio-setup__plugins li {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.65rem 0;
+	border-bottom: 1px solid #eee;
+}
+
+.studio-setup__badge {
+	font-size: 0.65rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	padding: 0.2rem 0.5rem;
+	background: #f0f0f1;
+	color: #666;
+}
+
+.studio-setup__badge--ok {
+	background: rgba(73, 31, 6, 0.12);
+	color: #491F06;
+}
+
+.studio-setup__log {
+	margin-top: 1rem;
+	padding: 1rem 1.25rem;
+	background: #f6f7f7;
+	border-left: 3px solid #491F06;
+	font-size: 0.9rem;
+	line-height: 1.5;
+}
+
+.studio-setup__log.is-error {
+	border-left-color: #640505;
+}
+
+.studio-setup__log-summary {
+	margin: 0;
+	font-weight: 500;
+	color: #0A0A0A;
+}
+
+.studio-setup__log-details {
+	margin-top: 0.75rem;
+}
+
+.studio-setup__log-details summary {
+	cursor: pointer;
+	font-size: 0.78rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #491F06;
+	user-select: none;
+}
+
+.studio-setup__log-list {
+	margin: 0.65rem 0 0;
+	padding-left: 1.1rem;
+	font-size: 0.82rem;
+	line-height: 1.55;
+	color: #555;
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+.studio-setup__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}

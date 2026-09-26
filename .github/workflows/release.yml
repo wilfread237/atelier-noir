@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags: [ 'v*' ]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish release zips
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+
+      - name: Unit tests
+        run: |
+          composer install --no-interaction --prefer-dist
+          composer test:unit
+
+      - name: Check tag matches theme version
+        run: |
+          version="$(sed -n 's/^Version:[[:space:]]*//p' style.css | head -1 | tr -d '\r')"
+          test "v$version" = "$GITHUB_REF_NAME" || { echo "Tag $GITHUB_REF_NAME does not match style.css Version $version"; exit 1; }
+
+      - name: Build zips
+        run: bash bin/build-release.sh
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.zip
+            dist/SHA256SUMS.txt
+          generate_release_notes: true

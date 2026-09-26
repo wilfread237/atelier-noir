@@ -1,0 +1,303 @@
+/**
+ * Page Services — Swiper vertical full-screen (effet éditorial).
+ */
+
+/* ── Intro (accessible, masquée visuellement) ────────────── */
+.studio-services-intro {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+}
+
+/* ── Page : une section visible à la fois, pas de scroll document ── */
+body.page-template-template-services,
+body.page-template-template-services-studio {
+	overflow: hidden;
+	height: 100vh;
+	height: 100dvh;
+}
+
+body.page-template-template-services .studio-footer,
+body.page-template-template-services-studio .studio-footer {
+	display: none;
+}
+
+.studio-services-page {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	height: 100vh;
+	height: 100dvh;
+	background: #0a0a0a;
+}
+
+.studio-services-swiper {
+	width: 100%;
+	height: 100vh;
+	height: 100dvh;
+	overflow: hidden;
+	background: #0a0a0a;
+}
+
+.studio-services-swiper .swiper-wrapper {
+	height: 100%;
+	background: #0a0a0a;
+}
+
+/* Effet creative : une slide recouvre l'autre (entrante / sortante). */
+.studio-services-swiper.swiper-creative {
+	overflow: hidden;
+}
+
+.studio-services-swiper.swiper-creative .swiper-wrapper {
+	overflow: hidden;
+}
+
+.studio-services-swiper.swiper-creative .swiper-slide {
+	overflow: hidden;
+	backface-visibility: hidden;
+	will-change: transform;
+	background: #0a0a0a;
+}
+
+/*
+ * Retour arrière : la section courante descend AU-DESSUS de la précédente.
+ * Swiper inverse l’empilement (active z:4, next z:3) → on rétablit l’ordre visuel.
+ */
+.studio-services-swiper.is-slide-prev .swiper-slide-next {
+	z-index: 5 !important;
+}
+
+.studio-services-swiper.is-slide-prev .swiper-slide-active {
+	z-index: 3 !important;
+}
+
+/* ── Slide = 100 % viewport ──────────────────────────────── */
+.studio-service-panel {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	height: 100dvh;
+	overflow: hidden;
+	display: grid;
+	align-items: end;
+	color: #ffffff;
+}
+
+/* ── Fond média ──────────────────────────────────────────── */
+.studio-service-panel__media {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+}
+
+.studio-service-panel__video,
+.studio-service-panel__image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	transform: scale(1.04);
+	transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Visible aussi pendant les transitions Swiper (prev / next). */
+.swiper-slide-active .studio-service-panel__video,
+.swiper-slide-active .studio-service-panel__image,
+.swiper-slide-prev .studio-service-panel__video,
+.swiper-slide-prev .studio-service-panel__image,
+.swiper-slide-next .studio-service-panel__video,
+.swiper-slide-next .studio-service-panel__image {
+	transform: scale(1);
+}
+
+.studio-service-panel__placeholder {
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(145deg, #1a1a1a, #111);
+}
+
+/* ── Voile gradient ──────────────────────────────────────── */
+.studio-service-panel__scrim {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 0.04) 0%,
+		rgba(0, 0, 0, 0.15) 40%,
+		rgba(0, 0, 0, 0.75) 100%
+	);
+	z-index: 1;
+}
+
+.studio-service-panel__number {
+	display: none !important;
+}
+
+.studio-service-panel__content {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	padding: 0 clamp(1.25rem, 4vw, 2rem) clamp(4rem, 10vh, 6rem);
+}
+
+.studio-service-panel__content-inner {
+	max-width: none;
+	width: 100%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.studio-service-panel__title {
+	text-transform: uppercase;
+	text-align: center !important;
+}
+
+.studio-service-panel__text {
+	display: none;
+}
+
+.studio-service-panel__cta {
+	display: inline-block;
+	font-weight: 700;
+	border-bottom: none !important;
+	padding-bottom: 0;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.an-services-footer-slide {
+	height: 100vh;
+	height: 100dvh;
+	background: #000;
+}
+
+.an-services-footer-slide .an-footer-editorial {
+	height: 100%;
+}
+
+/* Maquette SERVICES FOOTER : contenu bottom-center, pattern dans la slide */
+.an-services-footer-slide .an-footer-editorial--full {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	min-height: 100vh;
+	min-height: 100dvh;
+}
+
+.an-services-footer-slide .an-footer-editorial__inner {
+	width: 100%;
+	padding-top: clamp(1rem, 3vh, 2rem);
+	padding-bottom: clamp(2rem, 7vh, 4.5rem);
+}
+
+.swiper-pagination,
+.studio-services-swiper .swiper-pagination {
+	display: none !important;
+}
+
+/* ── Contenu (legacy overrides below) ─────────────────────── */
+.studio-service-panel__content-inner {
+	max-width: none;
+}
+
+.studio-service-panel__title {
+	margin: 0 0 1.25rem;
+	font-family: var(--studio-font-heading, "Outfit", sans-serif);
+	font-size: clamp(2.8rem, 7vw, 6.5rem);
+	font-weight: 700;
+	line-height: 0.95;
+	letter-spacing: -0.02em;
+	color: #fff;
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity 0.85s ease 0.15s, transform 0.85s ease 0.15s;
+}
+
+.studio-service-panel__text {
+	margin: 0 0 2.5rem;
+	font-family: var(--studio-font-body, "Inter", sans-serif);
+	font-size: clamp(0.85rem, 1.4vw, 1rem);
+	font-weight: 300;
+	line-height: 1.75;
+	max-width: 46ch;
+	color: rgba(255, 255, 255, 0.85);
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.8s ease 0.25s, transform 0.8s ease 0.25s;
+}
+
+.studio-service-panel__cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.8rem;
+	font-family: var(--studio-font-body, "Inter", sans-serif);
+	font-size: clamp(0.55rem, 1.4vw, 0.68rem);
+	font-weight: 700;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+	color: var(--studio-color-gray, #d9d9d9) !important;
+	text-decoration: none;
+	padding: 0;
+	border: 0 !important;
+	border-bottom: none !important;
+	opacity: 0;
+	transform: translateY(16px);
+	transition:
+		opacity 0.7s ease 0.35s,
+		transform 0.7s ease 0.35s,
+		color 0.3s ease;
+}
+
+.studio-service-panel__cta:hover,
+.studio-service-panel__cta:focus,
+.studio-service-panel__cta:focus-visible {
+	color: var(--studio-color-white, #fff) !important;
+	gap: 0.8rem;
+}
+
+/*
+ * Révélation sur la slide active + slides en transition.
+ * Sans prev/next : au retour arrière la sortante perd .swiper-slide-active
+ * immédiatement → opacity 0 → la section « disparaît » sans descendre visuellement.
+ */
+.swiper-slide-active .studio-service-panel__number,
+.swiper-slide-active .studio-service-panel__title,
+.swiper-slide-active .studio-service-panel__text,
+.swiper-slide-active .studio-service-panel__cta,
+.swiper-slide-prev .studio-service-panel__number,
+.swiper-slide-prev .studio-service-panel__title,
+.swiper-slide-prev .studio-service-panel__text,
+.swiper-slide-prev .studio-service-panel__cta,
+.swiper-slide-next .studio-service-panel__number,
+.swiper-slide-next .studio-service-panel__title,
+.swiper-slide-next .studio-service-panel__text,
+.swiper-slide-next .studio-service-panel__cta {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Override home-php-sections.css qui impose max-width: 42rem → empêche le centrage */
+.studio-services-page .studio-service-panel__content,
+.an-services .studio-service-panel__content {
+	max-width: none !important;
+	width: 100% !important;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+	.studio-service-panel__content {
+		padding: 0 6vw 10vh;
+	}
+
+	.studio-service-panel__text {
+		display: none;
+	}
+}

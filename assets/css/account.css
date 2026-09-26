@@ -1,0 +1,594 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Atelier Noir — Espace Client
+   Palette : #f5f3ef (page) / #0a0a0a (texte) / #fff (contenu)
+   Desktop : sidebar fixe 240px | contenu fluide
+   Mobile  : onglets horizontaux scrollables
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+	--acc-bg:       #f5f3ef;
+	--acc-card:     #ffffff;
+	--acc-ink:      #0a0a0a;
+	--acc-muted:    rgba(10,10,10,0.42);
+	--acc-rule:     rgba(10,10,10,0.08);
+	--acc-accent:   #0a0a0a;
+	--acc-nav-w:    240px;
+	--acc-hdr:      var(--studio-header-h, 72px);
+}
+
+/* ── Page background ──────────────────────────────────────────────────────── */
+
+body.woocommerce-account {
+	background-color: var(--acc-bg);
+}
+
+/* Header : contraste sur fond clair (même logique que woocommerce.css) */
+body.woocommerce-account .studio-header {
+	--hdr-text:       rgba(10, 10, 10, 0.78);
+	--hdr-text-hover: #0a0a0a;
+	--hdr-bar:        #0a0a0a;
+	--hdr-underline:  #0a0a0a;
+}
+
+body.woocommerce-account .studio-header .studio-currency-select {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%230a0a0a'/%3E%3C/svg%3E");
+	border-bottom-color: rgba(10, 10, 10, 0.4);
+	color: #0a0a0a;
+}
+
+/* ── Fil d'Ariane ─────────────────────────────────────────────────────────── */
+
+.studio-account-breadcrumb {
+	display:      flex;
+	align-items:  center;
+	gap:          0.5rem;
+	padding:      0.9rem 0 1.75rem;
+	font-size:    0.65rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color:        var(--acc-muted);
+
+	/* S'étend sur toute la largeur de la grille (sidebar + contenu) */
+	grid-column:  1 / -1;
+}
+
+.studio-account-breadcrumb a {
+	color:           var(--acc-muted);
+	text-decoration: none;
+	transition:      color 0.2s;
+}
+
+.studio-account-breadcrumb a:hover {
+	color: var(--acc-ink);
+}
+
+.studio-account-breadcrumb span[aria-current="page"] {
+	color: var(--acc-ink);
+}
+
+/* ── Zone globale WooCommerce ─────────────────────────────────────────────── */
+
+.woocommerce-account .site-content,
+.woocommerce-account #content,
+.woocommerce-account main {
+	padding-top:    calc(var(--acc-hdr) + 1.5rem);
+	padding-bottom: 5rem;
+	min-height:     80vh;
+}
+
+/* Grille principale : breadcrumb (full) | sidebar | contenu */
+.woocommerce-account .woocommerce {
+	max-width: 1160px;
+	margin:    0 auto;
+	padding:   0 clamp(1.25rem, 4vw, 3.5rem);
+	display:   grid;
+	grid-template-columns: var(--acc-nav-w) 1fr;
+	grid-template-rows:    auto 1fr;
+	column-gap: 4rem;
+	row-gap:    0;
+	align-items: start;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SIDEBAR NAVIGATION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.studio-account-nav {
+	position: sticky;
+	top:      calc(var(--acc-hdr) + 1.5rem);
+	display:  flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+/* ── Identité utilisateur ─────────────────────────────────────────────────── */
+
+.studio-account-nav__identity {
+	display:     flex;
+	align-items: center;
+	gap:         0.9rem;
+	padding:     0 0 1.5rem;
+	border-bottom: 1px solid var(--acc-rule);
+	margin-bottom: 1.25rem;
+}
+
+.studio-account-nav__avatar {
+	width:           40px;
+	height:          40px;
+	flex-shrink:     0;
+	background:      var(--acc-ink);
+	color:           #f5f3ef;
+	display:         flex;
+	align-items:     center;
+	justify-content: center;
+	font-size:       0.85rem;
+	font-weight:     500;
+	letter-spacing:  0.05em;
+	border-radius:   50%;
+}
+
+.studio-account-nav__greeting {
+	font-size:      0.58rem;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color:          var(--acc-muted);
+	margin:         0;
+}
+
+.studio-account-nav__name {
+	font-size:      0.95rem;
+	font-weight:    400;
+	color:          var(--acc-ink);
+	margin:         0.15rem 0 0;
+}
+
+/* ── Liste des items compte ───────────────────────────────────────────────── */
+
+.studio-account-nav__list {
+	list-style: none;
+	margin:     0;
+	padding:    0;
+}
+
+.studio-account-nav__list li {
+	border-bottom: 1px solid var(--acc-rule);
+}
+
+.studio-account-nav__list li a {
+	display:        block;
+	padding:        0.75rem 0;
+	font-size:      0.7rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	font-weight:    400;
+	color:          var(--acc-muted);
+	text-decoration:none;
+	transition:     color 0.2s, padding-left 0.2s;
+}
+
+.studio-account-nav__list li a:hover {
+	color:        var(--acc-ink);
+	padding-left: 0.4rem;
+}
+
+/* Élément actif */
+.studio-account-nav__list li.is-active a,
+.studio-account-nav__list li.woocommerce-MyAccount-navigation-link--active a {
+	color:       var(--acc-ink);
+	font-weight: 600;
+	padding-left:0.9rem;
+	position:    relative;
+}
+
+.studio-account-nav__list li.is-active a::before,
+.studio-account-nav__list li.woocommerce-MyAccount-navigation-link--active a::before {
+	content:    '';
+	position:   absolute;
+	left:       0;
+	top:        50%;
+	transform:  translateY(-50%);
+	width:      2px;
+	height:     60%;
+	background: var(--acc-ink);
+}
+
+/* ── Liens de navigation vers le site ────────────────────────────────────── */
+
+.studio-account-nav__site-links {
+	margin-top:    2rem;
+	padding-top:   1.5rem;
+	border-top:    1px solid var(--acc-rule);
+}
+
+.studio-account-nav__site-links-label {
+	font-size:      0.56rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color:          var(--acc-muted);
+	margin:         0 0 0.85rem;
+	opacity:        0.7;
+}
+
+.studio-account-nav__site-links ul {
+	list-style: none;
+	margin:     0;
+	padding:    0;
+	display:    flex;
+	flex-direction: column;
+	gap:        0.1rem;
+}
+
+.studio-account-nav__site-links li a {
+	display:        block;
+	padding:        0.4rem 0;
+	font-size:      0.7rem;
+	letter-spacing: 0.08em;
+	color:          var(--acc-muted);
+	text-decoration:none;
+	transition:     color 0.2s;
+}
+
+.studio-account-nav__site-links li a:hover {
+	color: var(--acc-ink);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONTENU PRINCIPAL
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.woocommerce-MyAccount-content {
+	background:  var(--acc-card);
+	padding:     clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3rem);
+	border:      1px solid var(--acc-rule);
+	min-height:  60vh;
+}
+
+/* Titres */
+.woocommerce-MyAccount-content h2 {
+	font-family:    var(--studio-font-heading, "Cormorant Garamond", serif);
+	font-size:      clamp(1.6rem, 3vw, 2.2rem);
+	font-weight:    300;
+	letter-spacing: -0.01em;
+	color:          var(--acc-ink);
+	margin:         0 0 1.75rem;
+}
+
+.woocommerce-MyAccount-content h3 {
+	font-size:      1rem;
+	font-weight:    600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color:          var(--acc-ink);
+	margin:         2rem 0 1rem;
+}
+
+/* Textes */
+.woocommerce-MyAccount-content p,
+.woocommerce-MyAccount-content address {
+	font-size:   0.9rem;
+	line-height: 1.75;
+	color:       var(--acc-ink);
+}
+
+/* ── Tableau commandes ────────────────────────────────────────────────────── */
+
+.woocommerce-orders-table,
+.woocommerce-table {
+	width:           100%;
+	border-collapse: collapse;
+}
+
+.woocommerce-orders-table thead th,
+.woocommerce-table thead th {
+	font-size:      0.6rem;
+	font-weight:    600;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color:          var(--acc-muted);
+	padding:        0.5rem 0;
+	border-bottom:  2px solid var(--acc-rule);
+	text-align:     left;
+}
+
+.woocommerce-orders-table tbody td,
+.woocommerce-table tbody td {
+	font-size:      0.85rem;
+	padding:        0.9rem 0;
+	border-bottom:  1px solid var(--acc-rule);
+	color:          var(--acc-ink);
+	vertical-align: middle;
+}
+
+/* Boutons tableau */
+.woocommerce-orders-table .button,
+.woocommerce-table .button {
+	background:      transparent;
+	border:          1px solid var(--acc-ink);
+	color:           var(--acc-ink);
+	font-size:       0.58rem;
+	letter-spacing:  0.14em;
+	text-transform:  uppercase;
+	padding:         0.35rem 0.9rem;
+	text-decoration: none;
+	transition:      background 0.2s, color 0.2s;
+	border-radius:   0;
+}
+
+.woocommerce-orders-table .button:hover,
+.woocommerce-table .button:hover {
+	background: var(--acc-ink);
+	color:      #fff;
+}
+
+/* Badges statut */
+mark.order-status {
+	background:     transparent;
+	font-size:      0.56rem;
+	font-weight:    600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	padding:        0.18rem 0.55rem;
+	border:         1px solid currentColor;
+	border-radius:  0;
+}
+
+mark.order-status.status-processing { color: #0369a1; border-color: rgba(3,105,161,0.4); }
+mark.order-status.status-completed  { color: #166534; border-color: rgba(22,101,52,0.4);  }
+mark.order-status.status-cancelled  { color: #991b1b; border-color: rgba(153,27,27,0.4);  }
+mark.order-status.status-on-hold    { color: #92400e; border-color: rgba(146,64,14,0.4);  }
+mark.order-status.status-refunded   { color: var(--acc-muted); border-color: var(--acc-rule); }
+
+/* ── Formulaires ──────────────────────────────────────────────────────────── */
+
+.woocommerce-MyAccount-content .woocommerce-EditAccountForm,
+.woocommerce-MyAccount-content .woocommerce-address-fields,
+.woocommerce-MyAccount-content form {
+	max-width: 520px;
+}
+
+.woocommerce-MyAccount-content .form-row,
+.woocommerce-MyAccount-content p {
+	margin-bottom: 1.25rem;
+}
+
+.woocommerce-MyAccount-content label {
+	display:        block;
+	font-size:      0.6rem;
+	font-weight:    600;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color:          var(--acc-muted);
+	margin-bottom:  0.4rem;
+}
+
+.woocommerce-MyAccount-content input[type="text"],
+.woocommerce-MyAccount-content input[type="email"],
+.woocommerce-MyAccount-content input[type="tel"],
+.woocommerce-MyAccount-content input[type="password"],
+.woocommerce-MyAccount-content select,
+.woocommerce-MyAccount-content textarea {
+	width:           100%;
+	background:      transparent;
+	border:          none;
+	border-bottom:   1px solid var(--acc-rule);
+	border-radius:   0;
+	box-shadow:      none;
+	outline:         none;
+	font-size:       0.9rem;
+	color:           var(--acc-ink);
+	padding:         0.5rem 0;
+	-webkit-appearance: none;
+	transition:      border-color 0.2s;
+}
+
+.woocommerce-MyAccount-content input:focus,
+.woocommerce-MyAccount-content select:focus,
+.woocommerce-MyAccount-content textarea:focus {
+	border-bottom-color: var(--acc-ink);
+}
+
+/* Bouton principal */
+.woocommerce-MyAccount-content .button,
+.woocommerce-MyAccount-content button[type="submit"],
+.woocommerce-MyAccount-content input[type="submit"] {
+	background:     var(--acc-ink);
+	color:          #fff;
+	border:         1px solid var(--acc-ink);
+	font-size:      0.65rem;
+	font-weight:    600;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	padding:        0.8rem 2.5rem;
+	cursor:         pointer;
+	border-radius:  0;
+	transition:     background 0.2s, color 0.2s;
+}
+
+.woocommerce-MyAccount-content .button:hover,
+.woocommerce-MyAccount-content button[type="submit"]:hover,
+.woocommerce-MyAccount-content input[type="submit"]:hover {
+	background: transparent;
+	color:      var(--acc-ink);
+}
+
+/* ── Messages / notices ───────────────────────────────────────────────────── */
+
+.woocommerce-message,
+.woocommerce-error,
+.woocommerce-info {
+	border-radius: 0 !important;
+	font-size:     0.85rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PAGE LOGIN / REGISTER (sans session ouverte)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Contexte non connecté (page login/register) : une seule colonne centrée
+   WooCommerce ajoute .woocommerce-not-logged-in via body class          */
+.woocommerce-not-logged-in.woocommerce-account .woocommerce {
+	grid-template-columns: 1fr;
+	max-width:             860px;
+}
+
+.woocommerce-account .woocommerce .col2-set {
+	display:               grid;
+	grid-template-columns: 1fr 1fr;
+	gap:                   4rem;
+	grid-column:           1 / -1;
+}
+
+/* Séparateur vertical entre connexion et inscription */
+.woocommerce-account .woocommerce .col2-set .col-1 {
+	padding-right:  2rem;
+	border-right:   1px solid var(--acc-rule);
+}
+
+.woocommerce-account .woocommerce .col2-set h2 {
+	font-family:    var(--studio-font-heading, "Cormorant Garamond", serif);
+	font-size:      clamp(1.4rem, 3vw, 2rem);
+	font-weight:    300;
+	letter-spacing: -0.01em;
+	margin-top:     0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE — tablette (≤ 960px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 960px) {
+	.woocommerce-account .woocommerce {
+		grid-template-columns: 1fr;
+		row-gap: 0;
+	}
+
+	/* L'identité + les liens site s'effacent, seule la nav reste */
+	.studio-account-nav {
+		position: static;
+	}
+
+	.studio-account-nav__identity {
+		display: none;
+	}
+
+	.studio-account-nav__site-links {
+		display: none;
+	}
+
+	/* Navigation horizontale scrollable */
+	.studio-account-nav__list {
+		display:         flex;
+		overflow-x:      auto;
+		gap:             0;
+		padding-bottom:  0;
+		border-top:      none;
+		border-bottom:   2px solid var(--acc-rule);
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
+
+	.studio-account-nav__list::-webkit-scrollbar { display: none; }
+
+	.studio-account-nav__list li {
+		border:      none;
+		white-space: nowrap;
+		flex-shrink: 0;
+	}
+
+	.studio-account-nav__list li a {
+		padding:       0.7rem 1rem;
+		border-bottom: 2px solid transparent;
+		margin-bottom: -2px;
+	}
+
+	.studio-account-nav__list li a:hover {
+		padding-left: 1rem;
+	}
+
+	.studio-account-nav__list li.is-active a,
+	.studio-account-nav__list li.woocommerce-MyAccount-navigation-link--active a {
+		border-bottom-color: var(--acc-ink);
+		color:               var(--acc-ink);
+		font-weight:         600;
+		padding-left:        1rem;
+	}
+
+	/* Retirer le trait gauche sur mobile */
+	.studio-account-nav__list li.is-active a::before,
+	.studio-account-nav__list li.woocommerce-MyAccount-navigation-link--active a::before {
+		display: none;
+	}
+
+	.woocommerce-account .woocommerce .col2-set {
+		grid-template-columns: 1fr;
+		gap:                   2rem;
+	}
+
+	.woocommerce-account .woocommerce .col2-set .col-1 {
+		padding-right: 0;
+		border-right:  none;
+		border-bottom: 1px solid var(--acc-rule);
+		padding-bottom:2rem;
+	}
+}
+
+/* ── Mobile (≤ 600px) ─────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+	.woocommerce-account .woocommerce {
+		padding: 0 1rem;
+	}
+
+	.woocommerce-MyAccount-content {
+		padding: 1.5rem 1rem;
+		border-left:  none;
+		border-right: none;
+	}
+
+	.studio-account-breadcrumb {
+		font-size:  0.6rem;
+		padding-bottom: 1.25rem;
+	}
+
+	.woocommerce-orders-table .order-date,
+	.woocommerce-orders-table .order-total {
+		display: none;
+	}
+}
+
+/* ── Barre de retour site flottante sur mobile ────────────────────────────── */
+
+@media (max-width: 960px) {
+	/* Mini-barre "Explorer le Studio" visible uniquement en bas de page mobile */
+	.studio-account-mobile-bar {
+		position:       fixed;
+		bottom:         0;
+		left:           0;
+		right:          0;
+		z-index:        100;
+		background:     var(--acc-ink);
+		display:        flex;
+		align-items:    center;
+		justify-content:center;
+		gap:            1.5rem;
+		padding:        0.85rem 1rem;
+		border-top:     1px solid rgba(255,255,255,0.08);
+	}
+
+	.studio-account-mobile-bar a {
+		color:          rgba(245,243,239,0.7);
+		font-size:      0.6rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		text-decoration:none;
+		transition:     color 0.2s;
+	}
+
+	.studio-account-mobile-bar a:hover {
+		color: #f5f3ef;
+	}
+}
+
+@media (min-width: 961px) {
+	.studio-account-mobile-bar { display: none; }
+}

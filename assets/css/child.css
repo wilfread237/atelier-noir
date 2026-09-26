@@ -1,0 +1,1150 @@
+.js-reveal,
+.js-text-reveal {
+	will-change: transform, opacity;
+}
+
+/* Loader : bloque le défilement pendant l’intro (classe ajoutée côté PHP) */
+body.has-studio-loader {
+	overflow: hidden;
+}
+
+/* Gabarit d’accueil de secours (brief client) */
+.studio-home-fallback {
+	--studio-accent-local: var(--studio-accent, #8b7355);
+}
+
+.studio-eyes-catcher {
+	position: relative;
+	min-height: 100vh;
+	min-height: 100dvh;
+	background: #0a0a0a;
+	color: #fff;
+}
+
+.studio-eyes-catcher__media {
+	position: absolute;
+	inset: 0;
+}
+
+.studio-eyes-catcher__video,
+.studio-eyes-catcher__iframe {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border: 0;
+	pointer-events: none;
+}
+
+.studio-eyes-catcher__placeholder {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+	text-align: center;
+	padding: 2rem;
+}
+
+.studio-eyes-catcher__placeholder-label {
+	max-width: 28rem;
+	margin: 0;
+	font-size: 0.85rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	opacity: 0.7;
+}
+
+.studio-eyes-catcher__overlay {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	display: flex;
+	align-items: flex-end;
+	padding: clamp(5rem, 14vh, 8rem) 0 clamp(2.5rem, 6vh, 4rem);
+	background: linear-gradient(transparent 35%, rgba(0, 0, 0, 0.72) 100%);
+	pointer-events: none;
+}
+
+.studio-eyes-catcher__overlay .container {
+	pointer-events: auto;
+}
+
+.studio-eyes-catcher__kicker {
+	margin: 0 0 1rem;
+	font-size: 0.75rem;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+	opacity: 0.9;
+}
+
+.studio-eyes-catcher__overlay-title,
+.studio-hero-title {
+	margin: 0 0 0.75rem;
+	font-family: var(--studio-font-heading, "Cormorant Garamond", serif);
+	font-size: clamp(2.75rem, 8vw, 5.5rem);
+	font-weight: 300;
+	line-height: 0.95;
+	letter-spacing: -0.02em;
+}
+
+.studio-eyes-catcher__title-line,
+.studio-hero-title__line {
+	display: block;
+}
+
+.studio-eyes-catcher__tagline,
+.studio-hero-tagline {
+	margin: 0;
+	max-width: 36ch;
+	font-size: 0.95rem;
+	line-height: 1.55;
+	color: rgba(255, 255, 255, 0.72);
+}
+
+.studio-studio-founder__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+	align-items: center;
+}
+
+.studio-studio-founder__photo {
+	aspect-ratio: 3 / 4;
+	max-height: 520px;
+	width: 100%;
+	background: linear-gradient(160deg, #d8d3cc, #ece8e2);
+	filter: grayscale(100%);
+}
+
+.studio-home-fallback__studio,
+#accueil-studio {
+	background-color: #0a0a0a;
+	color: #ffffff;
+	min-height: 100vh;
+	min-height: 100dvh;
+	padding-block: clamp(2rem, 5vw, 4rem);
+}
+
+.studio-home-fallback__studio .section-label {
+	color: #a08050;
+	font-size: 0.62rem;
+	letter-spacing: 0.38em;
+	text-transform: uppercase;
+}
+
+.studio-home-fallback__studio .section-title {
+	font-family: var(--studio-font-display, "Cormorant Garamond", Georgia, serif);
+	font-size: clamp(2.2rem, 5vw, 3.75rem);
+	font-weight: 300;
+	line-height: 1.08;
+	color: #ffffff;
+	margin: 0 0 1.5rem;
+}
+
+.studio-home-fallback__studio .studio-studio-founder__text {
+	color: rgba(255, 255, 255, 0.72);
+	line-height: 1.8;
+	max-width: 42ch;
+}
+
+.studio-studio-founder__cta.button,
+.studio-home-fallback__studio .studio-studio-founder__cta {
+	background: transparent !important;
+	border: 1px solid rgba(255, 255, 255, 0.75) !important;
+	color: #ffffff !important;
+	font-size: 0.62rem;
+	letter-spacing: 0.28em;
+	text-transform: uppercase;
+	transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.studio-studio-founder__cta.button:hover,
+.studio-home-fallback__studio .studio-studio-founder__cta:hover {
+	background: #491f06 !important;
+	border-color: #491f06 !important;
+}
+
+.studio-home-customizer__merch {
+	background-color: #0a0a0a;
+	color: #ffffff;
+	padding-block: clamp(4rem, 10vh, 7rem);
+}
+
+.studio-home-customizer__merch .section-label {
+	color: #a08050;
+	font-size: 0.62rem;
+	letter-spacing: 0.38em;
+	text-transform: uppercase;
+}
+
+.studio-home-customizer__merch .section-title {
+	font-family: var(--studio-font-display, "Cormorant Garamond", Georgia, serif);
+	font-size: clamp(2.5rem, 6vw, 4.5rem);
+	font-weight: 300;
+	line-height: 1.05;
+	color: #ffffff;
+	margin: 0 0 2.5rem;
+}
+
+.studio-home-fallback__hint {
+	font-size: 0.8rem;
+	color: var(--color-muted, #666);
+	padding-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+	.studio-studio-founder__grid {
+		grid-template-columns: minmax(240px, 38%) 1fr;
+	}
+}
+
+/* Gabarits Contact Studio / Services Studio : tout le layout et les fonds viennent d’Elementor */
+.studio-elementor-page {
+	width: 100%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HEADER — transparent overlay sur le hero, dark au scroll
+   ═══════════════════════════════════════════════════════════════════ */
+
+.site-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: var(--z-site-header, 9000);
+	padding: 1.5rem 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+	background: transparent;
+}
+
+
+.site-header .site-title a,
+.hello-elementor .site-header .site-title a {
+	color: #ffffff;
+	font-family: var(--studio-font-heading, "Cormorant Garamond", serif);
+	font-size: 1.1rem;
+	font-weight: 400;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.site-header .nav-menu a,
+.site-header nav a,
+.site-header .main-navigation a {
+	font-family: var(--studio-font-body, "Outfit", sans-serif);
+	font-size: 0.7rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: rgba(255,255,255,0.85);
+	text-decoration: none;
+	transition: color 0.25s ease;
+}
+
+.site-header .nav-menu a:hover,
+.site-header nav a:hover {
+	color: #ffffff;
+}
+
+.hello-elementor .site-header {
+	background: transparent;
+}
+
+/* Décalage du contenu pour les pages avec header fixe transparent */
+body:not(.home):not(.page-template-template-services) .elementor {
+	padding-top: 80px;
+}
+
+@media (max-width: 768px) {
+	body:not(.home):not(.page-template-template-services) .elementor {
+		padding-top: 64px;
+	}
+}
+
+/* Page Services : le header est overlay, pas de décalage */
+.page-template-template-services .studio-services-page {
+	padding-top: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FOOTER — minimal dark
+   ═══════════════════════════════════════════════════════════════════ */
+
+.site-footer {
+	background: #0a0a0a;
+	color: rgba(255,255,255,0.45);
+	padding: 2rem 3rem;
+	font-family: var(--studio-font-body, "Outfit", sans-serif);
+	font-size: 0.65rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+}
+
+.site-footer a {
+	color: rgba(255,255,255,0.45);
+	text-decoration: none;
+}
+
+.site-footer a:hover {
+	color: #ffffff;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ELEMENTOR — reset boutons verts par défaut
+   ═══════════════════════════════════════════════════════════════════ */
+
+.elementor-button {
+	background-color: #1a1a1a !important;
+	color: #ffffff !important;
+	border-radius: 0 !important;
+	font-family: var(--studio-font-body, "Outfit", sans-serif) !important;
+	font-size: 0.7rem !important;
+	letter-spacing: 0.2em !important;
+	text-transform: uppercase !important;
+}
+
+.elementor-button.elementor-button-link[style*="background-color:rgba(0,0,0,0)"],
+.elementor-button[style*="background-color: rgba(0, 0, 0, 0)"] {
+	background-color: transparent !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HEADER STUDIO — structure détaillée
+   ═══════════════════════════════════════════════════════════════════ */
+
+.studio-header {
+	position: fixed !important;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: var(--z-header, 99000) !important;
+	background: transparent;
+	/* transition sur la couleur uniquement, pas de fond au scroll */
+	transition: color 0.35s ease;
+}
+
+/* Logo à gauche, hamburger à droite (pleine largeur). Menu dans le drawer. */
+
+.studio-header__inner {
+	display:         flex;
+	align-items:     center;
+	justify-content: space-between;
+	width:           100%;
+	padding:         1.75rem clamp(1.25rem, 4vw, 3rem);
+}
+
+.studio-header__brand {
+	flex-shrink: 0;
+}
+
+.studio-header__nav,
+.studio-header__actions {
+	display: none;
+}
+
+/* ── Couleurs adaptatives : header sur section sombre (défaut) ── */
+.studio-header {
+	--hdr-text:       rgba(255,255,255,0.88);
+	--hdr-text-hover: #ffffff;
+	--hdr-bar:        #ffffff;
+	--hdr-underline:  #ffffff;
+}
+
+/* Header sur section claire → texte sombre */
+.studio-header--on-light {
+	--hdr-text:       rgba(10,10,10,0.78);
+	--hdr-text-hover: #0a0a0a;
+	--hdr-bar:        #0a0a0a;
+	--hdr-underline:  #0a0a0a;
+}
+
+/* Brand / logo */
+.studio-header__site-name {
+	font-family: var(--studio-font-heading, "Cormorant Garamond", serif);
+	font-size: 0.95rem;
+	font-weight: 400;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--hdr-text);
+	text-decoration: none;
+	transition: color 0.35s ease, opacity 0.2s;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.studio-header__site-name:hover { opacity: 0.75; }
+
+/* Nav desktop */
+.studio-nav {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.studio-nav__list {
+	display: flex !important;
+	align-items: center;
+	gap: 2rem;
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	flex-wrap: nowrap;
+}
+
+.studio-nav__list li {
+	display: list-item !important;
+}
+
+/* ── Tous les liens nav utilisent la variable CSS du header ──────────────
+   !important nécessaire pour écraser les styles Elementor Kit / Hello Elementor
+   qui injectent des couleurs de lien globales sur <a>. */
+.studio-header .studio-nav__list a,
+.studio-header .studio-nav__list li a {
+	font-family:     var(--studio-font-body, "Outfit", sans-serif) !important;
+	font-size:       0.68rem !important;
+	font-weight:     400 !important;
+	letter-spacing:  0.22em !important;
+	text-transform:  uppercase !important;
+	color:           var(--hdr-text) !important;   /* ← change avec --on-light */
+	text-decoration: none !important;
+	opacity:         0.72;                         /* items non-actifs : légèrement atténués */
+	position:        relative;
+	transition:      color 0.35s ease, opacity 0.35s ease !important;
+}
+
+.studio-header .studio-nav__list a::after {
+	content:    "";
+	position:   absolute;
+	bottom:     -4px;
+	left:       0;
+	width:      0;
+	height:     1px;
+	background: var(--hdr-underline);
+	transition: width 0.3s cubic-bezier(0.4,0,0.2,1), background 0.35s ease;
+}
+
+/* Hover : pleine opacité + soulignement */
+.studio-header .studio-nav__list a:hover,
+.studio-header .studio-nav__list li a:hover {
+	color:   var(--hdr-text-hover) !important;
+	opacity: 1 !important;
+}
+.studio-header .studio-nav__list a:hover::after { width: 100%; }
+
+/* Page active : pleine opacité + soulignement permanent (indicateur de position) */
+.studio-header .studio-nav__list .current-menu-item > a,
+.studio-header .studio-nav__list .current_page_item > a,
+.studio-header .studio-nav__list .current-menu-ancestor > a {
+	color:   var(--hdr-text-hover) !important;
+	opacity: 1 !important;
+}
+.studio-header .studio-nav__list .current-menu-item > a::after,
+.studio-header .studio-nav__list .current_page_item > a::after,
+.studio-header .studio-nav__list .current-menu-ancestor > a::after {
+	width: 100%;
+}
+
+/* ── Bouton hamburger ─────────────────────────────────────────────────────── */
+/* Reset complet navigateur : certains mobiles appliquent background, border,
+   outline sur <button> même avec background:none */
+.studio-header__toggle {
+	/* reset navigateur */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: transparent !important;
+	border: 0 !important;
+	outline: none !important;
+	-webkit-tap-highlight-color: transparent;
+	box-shadow: none !important;
+	color: var(--hdr-bar) !important;
+	/* structure */
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+	cursor: pointer;
+	padding: 8px;
+	width: 40px;
+	height: 40px;
+	transition: color 0.35s ease;
+}
+
+.studio-header__toggle-bar {
+	display: block;
+	width: 24px;
+	height: 1.5px;                         /* plus épais = mieux visible */
+	background: currentColor;
+	border-radius: 2px;
+	transition: transform 0.32s cubic-bezier(0.4,0,0.2,1),
+	            opacity   0.32s ease;
+}
+
+/* Animation X quand le menu est ouvert */
+.studio-header__toggle[aria-expanded="true"] .studio-header__toggle-bar:nth-child(1) {
+	transform: translateY(6.5px) rotate(45deg);
+}
+.studio-header__toggle[aria-expanded="true"] .studio-header__toggle-bar:nth-child(2) {
+	opacity: 0;
+	transform: scaleX(0);
+}
+.studio-header__toggle[aria-expanded="true"] .studio-header__toggle-bar:nth-child(3) {
+	transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ── Overlay menu mobile ──────────────────────────────────────────────────── */
+/* Le menu est en dehors du <header> → z-index propre, au-dessus de tout */
+.studio-mobile-menu {
+	position: fixed;
+	inset: 0;
+	background: #0a0a0a;
+	z-index: var(--z-menu, 100000); /* au-dessus du header */
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: flex-start;
+	padding: clamp(5rem, 12vh, 7rem) clamp(1.5rem, 5vw, 4rem) clamp(2rem, 6vh, 4rem);
+	overflow-y: auto;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: opacity 0.4s cubic-bezier(0.4,0,0.2,1),
+	            visibility 0.4s;
+}
+
+.studio-mobile-menu.is-open {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+}
+
+/* Bouton fermeture (croix) */
+.studio-mobile-menu__close {
+	-webkit-appearance: none;
+	appearance: none;
+	background: transparent !important;
+	border: 0 !important;
+	outline: none !important;
+	-webkit-tap-highlight-color: transparent;
+	position: absolute;
+	top: 1.5rem;
+	right: 1.5rem;
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	padding: 0;
+}
+
+.studio-mobile-menu__close span {
+	position: absolute;
+	width: 24px;
+	height: 1.5px;
+	background: #ffffff;
+	border-radius: 2px;
+}
+.studio-mobile-menu__close span:first-child { transform: rotate(45deg); }
+.studio-mobile-menu__close span:last-child  { transform: rotate(-45deg); }
+
+/* Liste liens */
+.studio-mobile-menu__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.studio-mobile-menu__list li { margin: 0.35rem 0; }
+
+/* !important indispensable : l'Elementor Kit injecte une couleur globale
+   sur <a> qui écrase color: #ffffff sans !important */
+.studio-mobile-menu__list a,
+.studio-mobile-menu__list .menu-item a {
+	font-family: var(--studio-font-heading, "Cormorant Garamond", serif) !important;
+	font-size: clamp(1.75rem, 5vw, 3rem) !important;
+	font-weight: 300 !important;
+	color: #ffffff !important;
+	text-decoration: none !important;
+	letter-spacing: 0.05em !important;
+	opacity: 0.5 !important;
+	display: block;
+	padding: 0.08em 0;
+	line-height: 1.05;
+	-webkit-tap-highlight-color: transparent;
+	transition: opacity 0.2s ease !important;
+}
+
+.studio-mobile-menu__list a:hover,
+.studio-mobile-menu__list a:active {
+	opacity: 1 !important;
+	color: #ffffff !important;
+}
+
+/* Page active : blanc plein ; inactifs : grisé (sans trait) */
+.studio-mobile-menu__list .current-menu-item > a,
+.studio-mobile-menu__list .current_page_item > a {
+	opacity: 1 !important;
+	color: #ffffff !important;
+}
+
+/* ── Responsive header (mobile ≤ 768px) ────────────────────────────────── */
+@media (max-width: 768px) {
+	/* 2 colonnes seulement : logo | actions (hamburger) */
+	.studio-header__inner {
+		grid-template-columns: 1fr auto;
+		padding: 1rem 1.5rem;
+	}
+
+	/* Nav dans le menu overlay → masquée ici */
+	.studio-header__nav,
+	.studio-nav              { display: none !important; }
+
+	/* Devise + compte dans l'overlay → masqués dans le header */
+	.studio-header__currency { display: none !important; }
+	.studio-header__account  { display: none !important; }
+
+	/* Hamburger toujours visible */
+	.studio-header__toggle   { display: flex !important; }
+}
+
+/* Tablette */
+@media (max-width: 1024px) and (min-width: 769px) {
+	.studio-nav__list     { gap: 1.25rem; }
+	.studio-header__inner { padding: 1.25rem 2rem; }
+}
+
+/* ── Espacement Elementor mobile ────────────────────────────────────────── */
+@media (max-width: 767px) {
+
+	/* Conteneur de section : zéro padding horizontal */
+	.elementor-section > .elementor-container,
+	.e-con > .e-con-inner {
+		padding-left:  0 !important;
+		padding-right: 0 !important;
+		max-width:     100% !important;
+		width:         100% !important;
+	}
+
+	/* Colonnes : padding latéral réduit (8px de chaque côté) */
+	.elementor-column,
+	.elementor-col-100,
+	.elementor-col-50 {
+		padding-left:  0 !important;
+		padding-right: 0 !important;
+	}
+
+	.elementor-column-wrap,
+	.elementor-widget-wrap {
+		padding-left:  0.5rem !important;
+		padding-right: 0.5rem !important;
+	}
+
+	/* Sections : padding vertical réduit */
+	.elementor-section.elementor-top-section:not(.elementor-element-studio-hero) {
+		padding-top:    2rem !important;
+		padding-bottom: 2rem !important;
+	}
+
+	/* Widgets : espace vertical inter-blocs réduit */
+	.elementor-widget {
+		margin-bottom: 0.75rem !important;
+	}
+	.elementor-widget:last-child { margin-bottom: 0 !important; }
+
+	/* Images : pleine largeur sur mobile */
+	.elementor-widget-image .elementor-image,
+	.elementor-widget-image img {
+		width:     100% !important;
+		max-width: 100% !important;
+	}
+
+	/* Titres fluides */
+	.elementor-widget-heading .elementor-heading-title {
+		font-size:   clamp(1.6rem, 7vw, 2.4rem) !important;
+		line-height: 1.15 !important;
+	}
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION MERCH — cartes produits homepage
+   ═══════════════════════════════════════════════════════════════════ */
+
+.studio-merch-card-img img {
+	width: 100%;
+	aspect-ratio: 3 / 4;
+	object-fit: cover;
+	object-position: center top;
+	display: block;
+	filter: grayscale(15%);
+	transition: filter 0.5s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+
+.studio-merch-card-img a:hover img {
+	filter: grayscale(0%);
+	transform: scale(1.02);
+}
+
+#studio-merch-preview .elementor-image-figure {
+	overflow: hidden;
+}
+
+/* Section shop preview — fond noir, typo luxe (maquette) */
+.elementor-top-section:has(.studio-merch-editorial),
+.elementor-top-section:has(.studio-merch-eyebrow),
+.elementor-element-studio-merch-preview,
+#studio-merch-preview {
+	background-color: #0A0A0A !important;
+	padding-block: clamp(4rem, 10vh, 7rem) !important;
+}
+
+.elementor-top-section:has(.studio-merch-editorial) .studio-merch-eyebrow,
+.elementor-top-section:has(.studio-merch-eyebrow) .studio-merch-eyebrow,
+.elementor-element-studio-merch-preview .studio-merch-eyebrow,
+#studio-merch-preview .studio-merch-eyebrow {
+	color: #a08050 !important;
+}
+
+.elementor-top-section:has(.studio-merch-eyebrow) .elementor-heading-title,
+.elementor-element-studio-merch-preview .elementor-heading-title,
+#studio-merch-preview .elementor-heading-title {
+	font-family: var(--studio-font-display, "Cormorant Garamond", Georgia, serif) !important;
+	font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
+	font-weight: 300 !important;
+	line-height: 1.05 !important;
+	color: #FFFFFF !important;
+	margin: 0 0 2.5rem !important;
+}
+
+.elementor-top-section:has(.studio-merch-eyebrow) .woocommerce ul.products,
+.elementor-element-studio-merch-preview .woocommerce ul.products,
+#studio-merch-preview .woocommerce ul.products {
+	gap: 2rem !important;
+	margin: 0 !important;
+}
+
+.elementor-top-section:has(.studio-merch-eyebrow) .woocommerce ul.products .studio-product-card__info,
+.elementor-element-studio-merch-preview .woocommerce ul.products .studio-product-card__info,
+#studio-merch-preview .studio-product-card__info {
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 0.35rem;
+	margin-top: 1.1rem;
+	padding: 0;
+}
+
+.elementor-top-section:has(.studio-merch-eyebrow) .woocommerce ul.products .studio-product-card__name,
+.elementor-element-studio-merch-preview .woocommerce ul.products .studio-product-card__name,
+#studio-merch-preview .studio-product-card__name {
+	font-family: var(--studio-font-display, "Cormorant Garamond", Georgia, serif) !important;
+	font-size: clamp(1rem, 1.6vw, 1.2rem) !important;
+	font-weight: 400 !important;
+	letter-spacing: 0.01em !important;
+	color: #FFFFFF !important;
+}
+
+.elementor-top-section:has(.studio-merch-eyebrow) .woocommerce ul.products .studio-product-card__price,
+.elementor-top-section:has(.studio-merch-eyebrow) .woocommerce ul.products .studio-product-card__price .amount,
+.elementor-top-section:has(.studio-merch-eyebrow) .woocommerce ul.products .studio-product-card .price,
+.elementor-element-studio-merch-preview .woocommerce ul.products .studio-product-card__price,
+.elementor-element-studio-merch-preview .woocommerce ul.products .studio-product-card__price .amount,
+.elementor-element-studio-merch-preview .woocommerce ul.products .studio-product-card .price,
+#studio-merch-preview .studio-product-card__price,
+#studio-merch-preview .studio-product-card__price .amount,
+#studio-merch-preview .studio-product-card .price {
+	font-family: var(--studio-font-body, "Outfit", sans-serif) !important;
+	font-size: 0.8rem !important;
+	color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.elementor-top-section:has(.studio-merch-editorial) .studio-merch-cta,
+.elementor-top-section:has(.studio-merch-eyebrow) .studio-merch-cta,
+.elementor-element-studio-merch-preview .studio-merch-cta,
+#studio-merch-preview .studio-merch-cta {
+	border: 1px solid rgba(255, 255, 255, 0.8) !important;
+	background: transparent !important;
+	color: #FFFFFF !important;
+	transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.studio-merch-cta--filled,
+.elementor-top-section:has(.studio-merch-editorial) .studio-merch-cta--filled {
+	background: var(--studio-color-brown, #491F06) !important;
+	border: 1px solid rgba(255, 255, 255, 0.55) !important;
+	color: #ffffff !important;
+	box-shadow: none;
+}
+
+.studio-merch-cta--filled:hover,
+.elementor-top-section:has(.studio-merch-editorial) .studio-merch-cta--filled:hover {
+	background: #3a1805 !important;
+	border-color: #3a1805 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION CEO — éditorial plein écran (maquette magazine)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.elementor-top-section:has(.studio-ceo-editorial),
+.elementor-top-section:has(.studio-founder-eyebrow),
+.elementor-element-studio-founder,
+#studio-founder {
+	background-color: #0A0A0A !important;
+	min-height: 100vh !important;
+	min-height: 100dvh !important;
+}
+
+.studio-ceo-editorial__inner {
+	display: flex;
+	align-items: center;
+	min-height: 100vh;
+	min-height: 100dvh;
+	padding: clamp(5rem, 12vh, 7rem) 0 clamp(3rem, 8vh, 5rem);
+}
+
+.studio-ceo-editorial__copy {
+	max-width: min(52ch, 90vw);
+}
+
+.studio-ceo-editorial__title {
+	margin: 0 0 0.75rem;
+	font-family: var(--studio-font-heading, "Outfit", sans-serif);
+	font-size: clamp(3.5rem, 11vw, 8.5rem);
+	font-weight: 700;
+	line-height: 0.92;
+	letter-spacing: -0.03em;
+	text-transform: uppercase;
+	color: #ffffff;
+}
+
+.studio-ceo-editorial__keywords {
+	margin: 0 0 1.5rem;
+	font-family: var(--studio-font-sub, "Inter", sans-serif);
+	font-size: 0.72rem;
+	letter-spacing: 0.32em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.55);
+}
+
+.studio-ceo-editorial__lead {
+	margin: 0 0 2rem;
+	max-width: 36ch;
+	font-family: var(--studio-font-body, "Inter", sans-serif);
+	font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+	line-height: 1.75;
+	color: rgba(255, 255, 255, 0.78);
+}
+
+.studio-ceo-editorial__cta {
+	display: inline-block;
+	padding: 0.95rem 2.4rem;
+	background: var(--studio-color-brown, #491F06);
+	border: 1px solid var(--studio-color-brown, #491F06);
+	color: #ffffff;
+	font-family: var(--studio-font-sub, "Inter", sans-serif);
+	font-size: 0.62rem;
+	letter-spacing: 0.28em;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.studio-ceo-editorial__cta:hover {
+	background: #3a1805;
+	border-color: #3a1805;
+	color: #ffffff;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION SHOP — rail vertical (nom de marque) + cartes distinctes
+   ═══════════════════════════════════════════════════════════════════ */
+
+.elementor-top-section:has(.studio-merch-editorial),
+.elementor-top-section:has(.studio-merch-eyebrow),
+.elementor-element-studio-merch-preview,
+#studio-merch-preview {
+	background-color: #0A0A0A !important;
+	min-height: 100vh !important;
+	min-height: 100dvh !important;
+}
+
+.studio-merch-editorial {
+	position: relative;
+	min-height: 100vh;
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: clamp(4rem, 10vh, 6rem) clamp(1.5rem, 5vw, 4rem);
+}
+
+.studio-merch-editorial__rail {
+	position: absolute;
+	left: clamp(0.5rem, 2vw, 1.25rem);
+	top: auto;
+	bottom: clamp(4.25rem, 9vh, 5.75rem);
+	writing-mode: vertical-rl;
+	transform: rotate(180deg);
+	font-family: var(--studio-font-heading, "Outfit", sans-serif);
+	font-size: clamp(2.75rem, 6.5vw, 4.75rem);
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.28);
+	pointer-events: none;
+	user-select: none;
+	z-index: 1;
+}
+
+.studio-merch-editorial__products {
+	position: relative;
+	z-index: 2;
+	padding-left: clamp(2rem, 6vw, 4.5rem);
+}
+
+.studio-merch-editorial__products .woocommerce ul.products,
+.studio-merch-editorial__products ul.products {
+	gap: clamp(1.25rem, 3vw, 2.5rem) !important;
+	margin: 0 !important;
+}
+
+.studio-merch-editorial__products .studio-product-card {
+	background: transparent;
+}
+
+.studio-merch-editorial__cta-wrap {
+	margin: clamp(2.5rem, 5vh, 3.5rem) 0 0;
+	padding: 0;
+	text-align: center;
+}
+
+.studio-merch-cta,
+.elementor-top-section:has(.studio-merch-editorial) .studio-merch-cta,
+#studio-merch-preview .studio-merch-cta {
+	display: inline-block;
+	padding: 0.9rem 2.5rem;
+	font-family: var(--studio-font-body, "Outfit", sans-serif);
+	font-size: 0.68rem;
+	font-weight: 500;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	text-decoration: none;
+	line-height: 1.35;
+	box-sizing: border-box;
+}
+
+.studio-merch-editorial__products .studio-product-card__arrow {
+	width: 1.85rem;
+	height: 1.85rem;
+	font-size: 0.85rem;
+	background: rgba(73, 31, 6, 0.48);
+	border-color: rgba(255, 255, 255, 0.22);
+}
+
+.studio-merch-editorial__products .studio-product-card:hover .studio-product-card__arrow {
+	opacity: 0.92;
+}
+
+/* Brand name rail — desktop only (hidden on tablet & mobile) */
+@media (max-width: 1024px) {
+	.studio-merch-editorial__rail {
+		display: none !important;
+	}
+
+	.studio-merch-editorial__products {
+		padding-left: 0;
+	}
+}
+
+@media (max-width: 767px) {
+	.studio-ceo-editorial__title {
+		font-size: clamp(2.75rem, 14vw, 4rem);
+	}
+
+	.studio-merch-cta {
+		padding: 0.85rem 1.75rem;
+	}
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HERO — forcer 100vh sans toucher au data Elementor
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Section héro plein écran — on cible la section et son container uniquement,
+   sans toucher aux éléments internes gérés par Elementor (vidéo, iframe, overlay) */
+.elementor-element-studio-hero {
+	min-height: 100vh !important;
+	min-height: 100dvh !important;
+}
+
+.elementor-element-studio-hero > .elementor-container {
+	min-height: 100vh !important;
+	min-height: 100dvh !important;
+	align-items: flex-end !important;
+}
+
+.elementor-element-studio-hero .elementor-widget-video,
+.elementor-element-studio-hero .elementor-widget-video iframe {
+	display: none !important;
+}
+
+/* Homepage — toutes les sections top-level en plein écran */
+body.home .elementor-location-header + .elementor .elementor-top-section,
+body.home .elementor .elementor-top-section {
+	min-height: 100vh;
+	min-height: 100dvh;
+}
+
+body.home .elementor .elementor-top-section > .elementor-container {
+	min-height: inherit;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SÉLECTEUR DE DEVISE — style luxury minimal
+   (dans .studio-header__actions → plus de margin-right nécessaire)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.studio-header__currency {
+	display:     flex;
+	align-items: center;
+	flex-shrink:  0;
+}
+
+/* Select natif — style luxury transparent */
+.studio-currency-select {
+	appearance:          none;
+	-webkit-appearance:  none;
+	background-color:    transparent;
+	background-image:    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23ffffff'/%3E%3C/svg%3E");
+	background-repeat:   no-repeat;
+	background-position: right 0 center;
+	background-size:     7px;
+	border:              none;
+	border-bottom:       1px solid rgba(255,255,255,0.55);
+	border-radius:       0;
+	box-shadow:          none;
+	padding:             0 1.2rem 0.15rem 0;
+	font-family:         inherit;
+	font-size:           0.62rem;
+	font-weight:         500;
+	letter-spacing:      0.12em;
+	text-transform:      uppercase;
+	color:               #fff;
+	cursor:              pointer;
+	outline:             none;
+	transition:          color 0.3s ease, border-color 0.3s ease;
+	min-width:           3rem;
+}
+
+/* Sur fond clair */
+.studio-header--on-light .studio-currency-select {
+	background-image:    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%230a0a0a'/%3E%3C/svg%3E");
+	border-bottom-color: rgba(10,10,10,0.4);
+	color:               #0a0a0a;
+}
+
+.studio-currency-select option {
+	background: #0a0a0a;
+	color:      #fff;
+}
+
+/* ─── Icône compte utilisateur (header desktop) ───────────────────────── */
+.studio-header__account {
+	position:    relative;
+	display:     flex;
+	align-items: center;
+	justify-content: center;
+	width:       2rem;
+	height:      2rem;
+	color:       var(--hdr-text, rgba(255,255,255,0.88));
+	text-decoration: none;
+	flex-shrink: 0;
+	margin-right: 0.5rem;
+	transition:  color 0.25s ease, opacity 0.25s ease;
+}
+
+.studio-header__account:hover {
+	color:   var(--hdr-text-hover, #ffffff);
+	opacity: 1;
+}
+
+/* Pastille verte "connecté" */
+.studio-header__account-dot {
+	position:      absolute;
+	top:           2px;
+	right:         2px;
+	width:         6px;
+	height:        6px;
+	border-radius: 50%;
+	background:    #22c55e;
+	border:        1.5px solid transparent;
+}
+
+/* Adaptation sur fond clair */
+.studio-header--on-light .studio-header__account {
+	color: var(--hdr-text, rgba(10,10,10,0.78));
+}
+
+/* Mobile : masqué dans le header, visible dans l'overlay menu */
+@media (max-width: 767px) {
+	.studio-header__account   { display: none; }
+	.studio-header__currency  { display: none; }
+
+	.studio-mobile-menu__currency {
+		display:         flex;
+		justify-content: center;
+		padding:         1.25rem 0;
+		border-top:      1px solid rgba(255,255,255,0.15);
+		margin-top:      auto;
+	}
+
+	.studio-mobile-menu__currency .studio-currency-select {
+		font-size: 0.7rem;
+	}
+}
+
+.studio-mobile-menu__nav {
+	flex: 0 0 auto;
+}
+
+.studio-mobile-menu__actions {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	margin-top: auto;
+	flex-shrink: 0;
+	padding-top: 1.25rem;
+	border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.studio-mobile-menu__action,
+.studio-mobile-menu__account {
+	display: inline-flex !important;
+	align-items: center;
+	gap: 0.55rem;
+	font-family: var(--studio-font-sub, "Inter", sans-serif) !important;
+	font-size: 0.68rem !important;
+	font-weight: 500 !important;
+	letter-spacing: 0.14em !important;
+	text-transform: uppercase !important;
+	color: rgba(255, 255, 255, 0.85) !important;
+	text-decoration: none !important;
+	opacity: 1 !important;
+	padding: 0 !important;
+	border: 0 !important;
+	background: transparent !important;
+}
+
+.studio-mobile-menu__account:hover { color: #fff !important; }
+
+.studio-mobile-menu__cart {
+	display: flex;
+	position: relative;
+}

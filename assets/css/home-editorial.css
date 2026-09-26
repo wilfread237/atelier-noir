@@ -1,0 +1,58 @@
+/**
+ * Home editorial layout — 2 full-screen sections + 40vh footer.
+ */
+
+.an-home {
+	background: #000;
+	color: #fff;
+}
+
+/* Section 1 — official pattern asset (no generated watermark) */
+.an-home__section--void {
+	min-height: 100vh;
+	min-height: 100dvh;
+	background-color: #000;
+	background-image: var(--an-home-void-desktop);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+@media (max-width: 1024px) {
+	.an-home__section--void {
+		background-image: var(--an-home-void-mobile, var(--an-home-void-desktop));
+		background-size: cover;
+		background-position: center;
+	}
+}
+
+/* Section 2 — CEO spotlight: preserve source framing on black */
+.an-home__section--hero {
+	height: 100vh;
+	height: 100dvh;
+	position: relative;
+	overflow: hidden;
+	background: #000;
+}
+
+.an-home__hero-image {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center center;
+	display: block;
+}
+
+/* Footer panel — 40vh, contenu bottom-center (maquette client) */
+.an-home-footer {
+	height: 40vh;
+	height: 40dvh;
+	min-height: 40vh;
+	min-height: 40dvh;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	background: #000;
+}

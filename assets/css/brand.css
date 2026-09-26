@@ -1,0 +1,160 @@
+:root {
+	--studio-color-black: #0A0A0A;
+	--studio-color-gray: #D9D9D9;
+	--studio-color-off-white: #E8E4DC;
+	--studio-color-white: #FFFFFF;
+	--studio-color-brown: #491F06;
+	--studio-color-red: #640505;
+
+	--studio-bg: var(--studio-color-white);
+	--studio-text: var(--studio-color-black);
+	--studio-accent: var(--studio-color-brown);
+	--studio-accent-alt: var(--studio-color-red);
+	--studio-muted: rgba(10, 10, 10, 0.55);
+	--studio-border: rgba(10, 10, 10, 0.15);
+
+	--studio-font-heading: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+	--studio-font-sub: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+	--studio-font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+	/* ── Table des couches d'empilement ─────────────────────────────────────
+	 * Modifier ICI — toute valeur numérique directe dans les fichiers CSS
+	 * doit référencer l'une de ces variables.
+	 * Ordre croissant de priorité visuelle.
+	 * ─────────────────────────────────────────────────────────────────────── */
+	--z-site-header:         9000;   /* .site-header Hello Elementor                */
+	--z-header-inner-overlay: 92000; /* fond recherche / panier (intra-header)      */
+	--z-header-inner-toggle:  92001; /* icône hamburger (intra-header)              */
+	--z-header:             99000;   /* .studio-header (notre header fixe)          */
+	--z-blend:              99001;   /* #an-body-blend pattern fixe sur header      */
+	--z-menu:              100000;   /* .an-menu-overlay + .studio-mobile-menu      */
+	--z-modal:             110000;   /* .an-legal-overlay                           */
+	--z-modal-close:       110010;   /* bouton fermeture du modal légal             */
+}
+
+html {
+	cursor: default;
+}
+
+a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+select,
+label[for],
+.studio-header__toggle,
+.studio-header__cart,
+.studio-header__account,
+.studio-product-card,
+.woocommerce-loop-product__link {
+	cursor: pointer;
+}
+
+body {
+	font-family: var(--studio-font-body);
+	color: var(--studio-text);
+	background: var(--studio-bg);
+}
+
+h1, h2, h3, h4, h5, h6,
+.studio-header__site-name,
+.studio-nav__list a,
+.studio-mobile-menu__list a {
+	font-family: var(--studio-font-heading);
+}
+
+.studio-section-label,
+.studio-header__eyebrow,
+.studio-nl-popup__eyebrow {
+	font-family: var(--studio-font-sub);
+}
+
+.studio-header__logo {
+	display: inline-flex;
+	align-items: center;
+	background: transparent;
+}
+
+.studio-logo {
+	background: transparent;
+	display: block;
+	max-height: clamp(28px, 5vw, 40px);
+	width: auto;
+	height: auto;
+}
+
+@media (max-width: 1024px) {
+	.studio-logo {
+		max-height: clamp(38px, 9.5vw, 52px);
+	}
+}
+
+/* Très petits écrans (≤ 480px, Galaxy S22+…) — logo plus lisible tout en
+   laissant la place à l’icône menu à droite. */
+@media (max-width: 480px) {
+	.studio-logo {
+		max-height: clamp(28px, 7.5vw, 36px);
+		max-width: min(62vw, 240px);
+		width: auto;
+		object-fit: contain;
+	}
+}
+
+.studio-section-full {
+	min-height: 100vh;
+	min-height: 100dvh;
+}
+
+/* Boutons principaux — marron + texte blanc */
+.studio-ceo-editorial__cta,
+.studio-merch-cta--filled,
+.woocommerce a.button,
+.woocommerce button.button:not(.studio-product-card__arrow),
+.woocommerce input.button,
+.woocommerce #respond input#submit,
+.woocommerce #payment #place_order,
+.wc-block-components-button:not(.is-link),
+.wc-block-cart__submit-button,
+.wc-block-components-checkout-place-order-button {
+	background-color: var(--studio-color-brown) !important;
+	border-color: var(--studio-color-brown) !important;
+	color: var(--studio-color-white) !important;
+}
+
+.studio-ceo-editorial__cta:hover,
+.studio-merch-cta--filled:hover,
+.woocommerce a.button:hover,
+.woocommerce button.button:not(.studio-product-card__arrow):hover,
+.woocommerce input.button:hover,
+.woocommerce #respond input#submit:hover,
+.woocommerce #payment #place_order:hover,
+.wc-block-components-button:not(.is-link):hover,
+.wc-block-cart__submit-button:hover,
+.wc-block-components-checkout-place-order-button:hover {
+	background-color: #3a1805 !important;
+	border-color: #3a1805 !important;
+	color: var(--studio-color-white) !important;
+}
+
+.studio-header__toggle,
+.studio-header__cart,
+.studio-header__account,
+.studio-nl-popup__close,
+.studio-shop-search-toggle,
+.wc-block-components-button.is-link {
+	background: transparent !important;
+	border-color: transparent !important;
+}
+
+.studio-site-loader__media {
+	max-width: min(320px, 72vw);
+	max-height: 72vh;
+	object-fit: contain;
+}
+
+.studio-site-loader__lottie {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

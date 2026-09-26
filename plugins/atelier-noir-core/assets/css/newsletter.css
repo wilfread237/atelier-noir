@@ -1,0 +1,381 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Atelier Noir — Newsletter Popup
+   Inspiré Tom Ford : sombre, typographique, éditorial
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.sr-only {
+	position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden;
+}
+
+/* ── Overlay + card ───────────────────────────────────────────────────────── */
+
+.studio-nl-popup {
+	position: fixed;
+	inset: 0;
+	z-index: 99998;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+}
+
+.studio-nl-popup__card {
+	background: var(--studio-color-black, #0A0A0A);
+	color: var(--studio-color-white, #fff);
+}
+
+.studio-nl-popup__consent {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.65rem;
+	margin: 1rem 0 1.25rem;
+	font-family: var(--studio-font-sub, Inter, sans-serif);
+	font-size: 0.72rem;
+	line-height: 1.5;
+	color: rgba(245, 243, 239, 0.85) !important;
+}
+
+.studio-nl-popup__consent span {
+	color: rgba(245, 243, 239, 0.85) !important;
+}
+
+.studio-nl-popup__consent input {
+	margin-top: 0.2rem;
+	accent-color: var(--studio-color-brown, #491F06);
+	flex-shrink: 0;
+}
+
+.studio-nl-popup__submit {
+	background: var(--studio-color-brown, #491F06);
+	color: var(--studio-color-white, #fff);
+}
+
+.studio-nl-popup__dismiss {
+	display: none !important;
+}
+
+.studio-nl-popup[hidden] {
+	display: none !important;
+}
+
+.studio-nl-popup.is-entering .studio-nl-popup__card {
+	animation: nlCardIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.studio-nl-popup.is-leaving .studio-nl-popup__backdrop {
+	animation: nlFadeOut 0.35s ease forwards;
+}
+.studio-nl-popup.is-leaving .studio-nl-popup__card {
+	animation: nlCardOut 0.35s ease forwards;
+}
+
+@keyframes nlCardIn {
+	from { opacity: 0; transform: translateY(24px) scale(0.97); }
+	to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes nlCardOut {
+	to { opacity: 0; transform: translateY(12px) scale(0.98); }
+}
+@keyframes nlFadeOut {
+	to { opacity: 0; }
+}
+
+/* ── Backdrop ─────────────────────────────────────────────────────────────── */
+
+.studio-nl-popup__backdrop {
+	position:   absolute;
+	inset:      0;
+	background: rgba(0, 0, 0, 0.72);
+	animation:  nlFadeIn 0.4s ease forwards;
+}
+
+@keyframes nlFadeIn {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+/* ── Card ─────────────────────────────────────────────────────────────────── */
+
+.studio-nl-popup__card {
+	position:       relative;
+	z-index:        1;
+	display:        grid;
+	grid-template-columns: 1fr 1.15fr;
+	max-width:      760px;
+	width:          100%;
+	max-height:     90vh;
+	overflow:       hidden;
+	background:     #0e0e0e;
+	box-shadow:     0 32px 80px rgba(0,0,0,0.55);
+}
+
+/* ── Bouton fermer ────────────────────────────────────────────────────────── */
+
+.studio-nl-popup__close {
+	position:   absolute;
+	top:        1.25rem;
+	right:      1.25rem;
+	background: transparent !important;
+	border:     none;
+	cursor:     pointer;
+	color:      rgba(245, 243, 239, 0.55) !important;
+	padding:    0.25rem;
+	z-index:    2;
+	transition: color 0.2s;
+	line-height:1;
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+.studio-nl-popup__close:hover,
+.studio-nl-popup__close:focus-visible {
+	color: #f5f3ef !important;
+	background: transparent !important;
+}
+
+.studio-nl-popup__close:focus,
+.studio-nl-popup__close:focus-visible {
+	outline:    none !important;
+	box-shadow: none !important;
+	border:     none !important;
+}
+
+.studio-nl-popup__close svg {
+	stroke: rgba(245, 243, 239, 0.55) !important;
+}
+
+.studio-nl-popup__submit {
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.studio-nl-popup__submit:focus,
+.studio-nl-popup__submit:focus-visible {
+	outline:    none !important;
+	box-shadow: none !important;
+	border:     none !important;
+	background: #491F06 !important;
+	color:      #ffffff !important;
+}
+
+.studio-nl-popup__input:focus,
+.studio-nl-popup__input:focus-visible,
+.studio-nl-popup__consent input:focus,
+.studio-nl-popup__consent input:focus-visible {
+	outline:      none !important;
+	box-shadow:   none !important;
+	border-color: rgba(245, 243, 239, 0.45) !important;
+}
+
+/* ── Visuel gauche ────────────────────────────────────────────────────────── */
+
+.studio-nl-popup__visual {
+	overflow: hidden;
+	min-height: 360px;
+}
+
+.studio-nl-popup__visual-inner {
+	width:      100%;
+	height:     100%;
+	/* Image + dégradé : Personnaliseur → Atelier Noir — popup newsletter (inline CSS) */
+	background: linear-gradient(160deg, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0.0) 60%), #1a1a1a;
+	background-size: cover;
+	background-position: center;
+	transition: transform 0.6s ease;
+}
+
+.studio-nl-popup__card:hover .studio-nl-popup__visual-inner {
+	transform: scale(1.03);
+}
+
+/* ── Contenu droite ───────────────────────────────────────────────────────── */
+
+.studio-nl-popup__content {
+	padding:        3rem 2.75rem 2.5rem;
+	display:        flex;
+	flex-direction: column;
+	justify-content:center;
+	overflow-y:     auto;
+}
+
+.studio-nl-popup__eyebrow {
+	font-size:      0.58rem;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color:          rgba(245,243,239,0.3);
+	margin:         0 0 1rem;
+}
+
+.studio-nl-popup__title {
+	font-size:      1.85rem;
+	font-weight:    300;
+	line-height:    1.15;
+	letter-spacing: 0.01em;
+	color:          #f5f3ef;
+	margin:         0 0 0.9rem;
+}
+
+.studio-nl-popup__sub {
+	font-size:      0.78rem;
+	letter-spacing: 0.03em;
+	line-height:    1.65;
+	color:          rgba(245,243,239,0.5);
+	margin:         0 0 2rem;
+}
+
+/* ── Formulaire ───────────────────────────────────────────────────────────── */
+
+.studio-nl-popup__form {
+	position: relative;
+}
+
+.studio-nl-popup__field {
+	display:       flex;
+	align-items:   stretch;
+	border-bottom: 1px solid rgba(245,243,239,0.25);
+	margin-bottom: 1rem;
+	transition:    border-color 0.2s;
+}
+
+.studio-nl-popup__field:focus-within {
+	border-color: rgba(245,243,239,0.8);
+}
+
+.studio-nl-popup__input {
+	flex:        1;
+	background:  transparent;
+	border:      none;
+	outline:     none;
+	color:       #f5f3ef;
+	font-size:   0.82rem;
+	letter-spacing:0.04em;
+	padding:     0.65rem 0.5rem 0.65rem 0;
+	-webkit-appearance: none;
+}
+
+.studio-nl-popup__input::placeholder {
+	color: rgba(245,243,239,0.3);
+}
+
+/* ── CTA ──────────────────────────────────────────────────────────────────── */
+
+.studio-nl-popup__submit {
+	width:          100%;
+	background:     #491F06 !important;
+	color:          #ffffff !important;
+	border:         none;
+	cursor:         pointer;
+	appearance:     none;
+	-webkit-appearance: none;
+	font-size:      0.68rem;
+	letter-spacing: 0.15em;
+	text-transform: uppercase;
+	padding:        0.9rem 1.5rem;
+	position:       relative;
+	display:        flex;
+	align-items:    center;
+	justify-content:center;
+	gap:            0.5rem;
+	transition:     background 0.2s, color 0.2s;
+}
+
+.studio-nl-popup__submit:hover,
+.studio-nl-popup__submit:focus-visible {
+	background: #640505 !important;
+	color: #ffffff !important;
+}
+
+.studio-nl-popup__submit-loader {
+	display: none;
+}
+
+.studio-nl-popup__form.is-loading .studio-nl-popup__submit-text {
+	opacity: 0;
+}
+
+.studio-nl-popup__form.is-loading .studio-nl-popup__submit-loader {
+	display: block;
+	position: absolute;
+}
+
+/* ── Messages retour ──────────────────────────────────────────────────────── */
+
+.studio-nl-popup__success,
+.studio-nl-popup__error {
+	font-size:      0.75rem;
+	letter-spacing: 0.04em;
+	margin:         0.75rem 0 0;
+	line-height:    1.5;
+}
+
+.studio-nl-popup__success {
+	color: rgba(245,243,239,0.7);
+}
+
+.studio-nl-popup__error {
+	color: #e07070;
+}
+
+.studio-nl-popup__success[hidden],
+.studio-nl-popup__error[hidden] {
+	display: none;
+}
+
+/* ── Liens secondaires ────────────────────────────────────────────────────── */
+
+.studio-nl-popup__dismiss {
+	background:     transparent;
+	border:         none;
+	cursor:         pointer;
+	color:          rgba(245,243,239,0.3);
+	font-size:      0.65rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	text-decoration:underline;
+	text-underline-offset:3px;
+	padding:        1rem 0 0;
+	display:        block;
+	transition:     color 0.2s;
+}
+
+.studio-nl-popup__dismiss:hover {
+	color: rgba(245,243,239,0.6);
+}
+
+.studio-nl-popup__privacy {
+	font-size:   0.62rem;
+	letter-spacing:0.02em;
+	color:       rgba(245,243,239,0.18);
+	margin:      0.6rem 0 0;
+	line-height: 1.5;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+	.studio-nl-popup {
+		padding: 0;
+		align-items: flex-end;
+	}
+
+	.studio-nl-popup__card {
+		grid-template-columns: 1fr;
+		max-height: 85vh;
+		width: 100%;
+		border-radius: 0;
+	}
+
+	.studio-nl-popup__visual {
+		min-height: 180px;
+		max-height: 180px;
+	}
+
+	.studio-nl-popup__content {
+		padding: 2rem 1.5rem 2rem;
+	}
+
+	.studio-nl-popup__title {
+		font-size: 1.5rem;
+	}
+}

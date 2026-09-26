@@ -1,0 +1,323 @@
+/**
+ * Editorial full-screen menu overlay (maquette).
+ *
+ * Single official pattern asset — base layer + aligned blend layer over nav text.
+ * No generated pattern, no background-clip: text per link.
+ */
+
+.an-menu-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: var(--z-menu, 100000);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	background: #000;
+	color: #fff;
+	overflow: hidden;
+	isolation: isolate;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.45s;
+}
+
+.an-menu-overlay.is-open {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+}
+
+/* Same PNG, same crop — base (ambient) + blend (over text) */
+.an-menu-overlay__pattern {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background-image: var(--an-menu-pattern);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.an-menu-overlay__pattern--base {
+	z-index: 0;
+}
+
+.an-menu-overlay__pattern--blend {
+	z-index: 3;
+	opacity: 1;
+}
+
+.an-menu-overlay__nav {
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	padding: clamp(5rem, 14vh, 8rem) clamp(1.5rem, 5vw, 3rem);
+}
+
+.an-menu-overlay__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: clamp(0.15rem, 1.2vh, 0.65rem);
+	text-align: center;
+}
+
+.an-menu-overlay__link {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	font-family: var(--studio-font-heading, "Outfit", sans-serif);
+	font-size: clamp(2rem, 7vw, 4.5rem);
+	font-weight: 700;
+	line-height: 1.05;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	text-decoration: none !important;
+	color: #ffffff !important;
+	opacity: 0;
+	transform: translateY(18px);
+	transition:
+		opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+		transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+		color 0.25s ease;
+	transition-delay: calc(var(--an-menu-i, 0) * 0.07s + 0.08s);
+}
+
+.an-menu-overlay__link--lower {
+	text-transform: none;
+	font-weight: 700;
+	letter-spacing: 0.01em;
+}
+
+.an-menu-overlay.is-open .an-menu-overlay__link {
+	opacity: 1 !important;
+	color: #ffffff !important;
+	transform: translateY(0);
+}
+
+.an-menu-overlay__link:hover,
+.an-menu-overlay__link:focus-visible {
+	color: #ffffff !important;
+	opacity: 0.82 !important;
+}
+
+/* Editorial menu links — beat Elementor Kit global <a> color */
+.an-menu-overlay .an-menu-overlay__link {
+	color: #ffffff !important;
+}
+
+.an-menu-overlay.is-open .an-menu-overlay__link {
+	opacity: 1 !important;
+	color: #ffffff !important;
+}
+
+.an-menu-overlay .an-menu-overlay__link:hover,
+.an-menu-overlay .an-menu-overlay__link:focus,
+.an-menu-overlay .an-menu-overlay__link:focus-visible {
+	color: #ffffff !important;
+	opacity: 0.82 !important;
+}
+
+/* Close — top-right, above blend layer, unaffected by mix-blend */
+.an-menu-overlay__close {
+	position: absolute;
+	top: clamp(1.25rem, 3vh, 1.5rem);
+	right: clamp(1.25rem, 3vw, 1.5rem);
+	z-index: 5;
+	mix-blend-mode: normal;
+	color: #fff !important;
+}
+
+.an-menu-overlay__close span {
+	background: #fff !important;
+}
+
+/* Vertical menu icon in header — always visible (child.css hides generic toggle on desktop) */
+.studio-header__toggle--vertical {
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+	min-width: 48px;
+	height: auto;
+	min-height: 48px;
+	padding: 0 0.25rem;
+	background: transparent !important;
+	border: 0 !important;
+	cursor: pointer;
+	color: #fff !important;
+	flex-shrink: 0;
+}
+
+.studio-header__toggle--vertical .studio-header__toggle-bar {
+	display: none;
+}
+
+.studio-header__toggle--vertical:hover,
+.studio-header__toggle--vertical:focus,
+.studio-header__toggle--vertical:focus-visible {
+	color: #fff !important;
+	background: transparent !important;
+	outline: none !important;
+	box-shadow: none !important;
+	opacity: 0.85;
+}
+
+.studio-header__toggle--vertical:hover .studio-header__toggle-icon,
+.studio-header__toggle--vertical:focus .studio-header__toggle-icon {
+	opacity: 0.85;
+	filter: none;
+}
+
+.studio-header__toggle-icon {
+	display: block;
+	flex-shrink: 0;
+	width: auto;
+	height: clamp(52px, 8vh, 72px);
+	max-width: none;
+	object-fit: contain;
+	object-position: center;
+}
+
+body.studio-menu-open {
+	overflow: hidden;
+}
+
+/* Editorial menu: hide legacy drawer nav/actions */
+.an-menu-overlay .studio-mobile-menu__nav,
+.an-menu-overlay .studio-mobile-menu__actions {
+	display: none !important;
+}
+
+@media (max-width: 1024px) {
+	.an-menu-overlay--pattern .an-menu-overlay__pattern {
+		background-image: var(--an-menu-pattern-mobile, var(--an-menu-pattern));
+	}
+}
+
+/* Mobile : items du menu plus grands */
+@media (max-width: 768px) {
+	.an-menu-overlay__link {
+		font-size: clamp(2.6rem, 11vw, 3.8rem);
+	}
+
+	.an-menu-overlay__list {
+		gap: clamp(0.5rem, 2.5vh, 1.2rem);
+	}
+
+	.studio-header__toggle--vertical {
+		min-width: 36px;
+		min-height: 36px;
+		padding: 0;
+		margin-right: -0.4rem;
+	}
+
+	.studio-header__toggle-icon {
+		height: clamp(28px, 4.5vh, 40px);
+		max-height: 40px;
+	}
+}
+
+/* -----------------------------------------------------------------------
+ * Global fixed pattern blend — couvre l'intégralité du viewport
+ * y compris le header (logo + icone menu).
+ * pointer-events: none garantit que tous les éléments restent cliquables.
+ * z-index 93000 : au-dessus du header (~9999) mais sous le menu overlay (100000).
+ * ----------------------------------------------------------------------- */
+#an-body-blend {
+	display: none;
+	position: fixed;
+	inset: 0;
+	z-index: var(--z-blend, 99001);
+	pointer-events: none;
+	background-image: var(--an-body-pattern);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+/* Pages avec blend permanent (contact, projects) */
+body.an-full-blend #an-body-blend {
+	display: block;
+}
+
+/* Services : pattern dans le footer editorial (slide), pas de calque fixe global */
+body.studio-menu-open #an-body-blend {
+	display: none !important;
+}
+
+/* -----------------------------------------------------------------------
+ * Pattern par-dessus le header (logo + icône menu) — maquette Projects/Services.
+ * Bande fixe limitée à la hauteur du header (pas plein écran comme #an-body-blend) :
+ * le motif recouvre visuellement le logo/hamburger sans décaler au scroll,
+ * car elle affiche toujours le même recadrage (haut du motif), identique à ce
+ * qui se trouve juste dessous dans le calque qui défile avec le contenu.
+ * z-index au-dessus du header (99000) mais sous le menu overlay (100000).
+ *
+ * Visible uniquement quand la section footer est "appelée" (Projects : footer
+ * dans le viewport au scroll ; Services : slide footer actif dans le Swiper) —
+ * an-header-blend-active est basculé en JS (voir projects-header-blend.js et
+ * services.js). an-header-blend seul (sans -active) ne suffit pas.
+ * ----------------------------------------------------------------------- */
+#an-header-pattern-blend {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: clamp(90px, 14vh, 130px);
+	z-index: 99010;
+	pointer-events: none;
+	background-image: var(--an-header-pattern);
+	background-repeat: repeat-y;
+	background-position: top center;
+	background-size: auto 100vh;
+	background-size: auto 100dvh;
+}
+
+@media (max-width: 1024px) {
+	#an-header-pattern-blend {
+		background-image: var(--an-header-pattern-mobile, var(--an-header-pattern));
+	}
+}
+
+body.an-header-blend.an-header-blend-active #an-header-pattern-blend {
+	display: block;
+}
+
+/*
+ * Projects : la bande est toujours affichée (pas de toggle) — sa position
+ * de fond est pilotée en continu par le scroll (projects-header-blend.js)
+ * pour rester visuellement la suite exacte du motif défilant en dessous,
+ * dès la section 1 et jusqu'au footer, sans jamais de saut/décalage.
+ */
+body.an-header-blend-scroll #an-header-pattern-blend {
+	display: block;
+}
+
+/* Feed : masquer uniquement la bande pattern AU-DESSUS du header (bug DIO
+ * sur la 1re section média). Les calques .an-projects__pattern-* restent
+ * actifs pour le footer ; le feed (z-index: 3) couvre le motif sur les médias. */
+body:has(.an-projects--feed) #an-header-pattern-blend {
+	display: none !important;
+}
+
+body.studio-menu-open #an-header-pattern-blend {
+	display: none !important;
+}
+
+/* -----------------------------------------------------------------------
+ * Masquer les watermarks de section quand le blend global fixe est actif.
+ * Évite la superposition : section (absolu) + #an-body-blend (fixe) = double couche.
+ * ----------------------------------------------------------------------- */
+body.an-full-blend .an-projects-ambient__watermark,
+body.an-full-blend .an-contact-page__watermark {
+	display: none !important;
+}

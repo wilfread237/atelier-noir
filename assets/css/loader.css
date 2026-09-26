@@ -1,0 +1,108 @@
+/**
+ * Loader plein écran — style éditorial.
+ * Fond noir, nom du studio en reveal typographique, barre de progression.
+ */
+
+.studio-site-loader {
+	position: fixed;
+	inset: 0;
+	z-index: 99999;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: var( --studio-loader-bg, #000000 );
+	color: var( --studio-loader-fg, #ffffff );
+	overflow: hidden;
+}
+
+/* ── Sortie ─────────────────────────────── */
+.studio-site-loader.is-done {
+	transition: opacity 0.9s cubic-bezier( 0.76, 0, 0.24, 1 ), visibility 0.9s;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+/* ── Conteneur central ───────────────────── */
+.studio-site-loader__inner {
+	position: relative;
+	text-align: center;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* ── Nom du studio ───────────────────────── */
+.studio-site-loader__brand {
+	margin: 0;
+	font-family: var( --studio-font-heading, "Cormorant Garamond", serif );
+	font-size: clamp( 2.5rem, 9vw, 6.5rem );
+	font-weight: 300;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	line-height: 1;
+	overflow: visible;
+}
+
+/* Chaque mot enveloppé dans .loader-word est animé */
+.studio-site-loader__word {
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: bottom;
+}
+
+.studio-site-loader__word-inner {
+	display: inline-block;
+	transform: translateY( 110% );
+	animation: loaderWordUp 0.9s cubic-bezier( 0.16, 1, 0.3, 1 ) forwards;
+}
+
+/* Décalage par mot */
+.studio-site-loader__word:nth-child( 1 ) .studio-site-loader__word-inner { animation-delay: 0.05s; }
+.studio-site-loader__word:nth-child( 2 ) .studio-site-loader__word-inner { animation-delay: 0.22s; }
+.studio-site-loader__word:nth-child( 3 ) .studio-site-loader__word-inner { animation-delay: 0.38s; }
+
+/* Espace inter-mots */
+.studio-site-loader__word + .studio-site-loader__word {
+	margin-left: 0.35em;
+}
+
+@keyframes loaderWordUp {
+	from { transform: translateY( 110% ); }
+	to   { transform: translateY( 0 ); }
+}
+
+/* ── Sous-titre (optionnel) ──────────────── */
+.studio-site-loader__sub {
+	margin: 1.25rem 0 0;
+	font-family: var( --studio-font-body, "Outfit", sans-serif );
+	font-size: 0.65rem;
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+	opacity: 0;
+	animation: loaderFadeIn 0.6s ease 0.7s forwards;
+}
+
+@keyframes loaderFadeIn {
+	from { opacity: 0; transform: translateY( 6px ); }
+	to   { opacity: 0.55; transform: translateY( 0 ); }
+}
+
+/* ── Barre de progression ────────────────── */
+.studio-site-loader__bar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 1px;
+	width: 0;
+	background: var( --studio-loader-fg, #ffffff );
+	opacity: 0.4;
+	animation: loaderBar var( --loader-duration, 1.6s ) cubic-bezier( 0.4, 0, 0.2, 1 ) forwards;
+}
+
+@keyframes loaderBar {
+	from { width: 0; }
+	to   { width: 100%; }
+}

@@ -1,0 +1,21 @@
+{
+	"name": "wilfread237/atelier-noir",
+	"description": "Atelier Noir — luxury editorial WordPress child theme for Hello Elementor",
+	"type": "wordpress-theme",
+	"license": "GPL-3.0-or-later",
+	"require": {
+		"php": ">=7.4"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^9.6"
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"AtelierNoir\\Tests\\": "tests/"
+		}
+	},
+	"scripts": {
+		"test": "phpunit",
+		"test:unit": "phpunit --testsuite unit"
+	}
+}

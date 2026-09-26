@@ -1,0 +1,9 @@
+/vendor/
+composer.lock
+.DS_Store
+*.swp
+*~
+.phpunit.result.cache
+/assets/mockups/
+/dist/
+/bundled/

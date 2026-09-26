@@ -1,0 +1,38 @@
+name: Bug report
+description: Something is broken in the theme or the companion plugin.
+labels: [ bug ]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to …
+        2. Click …
+        3. See …
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      placeholder: Atelier Noir 1.1.0, Atelier Noir Core 1.1.0, WordPress 6.8, PHP 8.2
+    validations:
+      required: true
+  - type: textarea
+    id: plugins
+    attributes:
+      label: Active plugins
+      description: Elementor, WooCommerce, MailPoet, caching plugins…
+  - type: textarea
+    id: logs
+    attributes:
+      label: Errors or screenshots
+      description: Browser console errors, `wp-content/debug.log` excerpts, screenshots.
