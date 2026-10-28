@@ -8,7 +8,7 @@
 
 ![Atelier Noir](screenshot.png)
 
-- **Download:** [atelier-noir.zip](https://github.com/wilfread237/atelier-noir/releases/latest/download/atelier-noir.zip) (theme + companion plugin)
+- **Download:** [atelier-noir.zip](https://github.com/wilfread237/atelier-noir/releases/latest/download/atelier-noir.zip) (theme + companion plugin). The zip is published when a `v*` tag matches `Version` in `style.css`. Until that first release, clone the repository.
 - **Live demo:** _coming soon_
 
 ---
@@ -32,16 +32,19 @@ The visual language borrows from the codes of high-end fashion and event design:
 
 ## Features
 
-- **Editorial home**: full-screen video hero ("eyes catcher") with animated title, founder biography section.
-- **Services page**: full-screen slides with image or video, copy and a call to action linked to the contact form.
-- **Projects**: dedicated post type with full-screen media sections and a paginated archive.
-- **Contact and booking** page templates with tabs.
-- **Legal pages**: legal notice, privacy policy and terms of sale templates, pre-filled from your site name, admin email and domain.
+- **Home**: black field, centered white type, one dark-orange line, and two actions — Start project and Explore services. “Made in Douala” stays on the home header.
+- **Header**: the `atelier` / `noir.` wordmark and the menu icon on every page. On the legal pages the wordmark and the icon turn black.
+- **Services**: full-screen slides, titles in lowercase, a photograph behind each service, and a call to action toward contact.
+- **Projects**: a project post type. Each project is a stack of full-screen images. A caption can sit on an image. The title is for the admin and the project URL.
+- **Contact**: lowercase studio details and the same social icons as the footer.
+- **Footer**: navigation, information, and a Theme author column (LinkedIn, email, Instagram, TikTok).
+- **Sharing**: Open Graph and Twitter cards (title `atelier noir`, a studio description, a bundled preview image) and a wordmark favicon.
+- **Legal pages**: legal notice, privacy policy and terms, on a light field.
 - **Menu overlay** and **page loader** with Customizer controls.
-- **Optional WooCommerce shop**, styled to match, with branded emails.
+- **Optional WooCommerce shop**, off until you install WooCommerce and enable **Customize → Atelier Noir — Commerce**. Styled to match, with branded emails.
 - **Newsletter** footer form and popup via MailPoet, with explicit consent (hidden when MailPoet is not installed).
-- **Setup page** (**Appearance → Atelier Noir Setup**) with plugin checklist and one-click demo content.
-- **Open-source typography**, self-hosted: [Outfit](https://fonts.google.com/specimen/Outfit) for headings, [Inter](https://fonts.google.com/specimen/Inter) for body text (SIL Open Font License). A curated list of Google Fonts is available in the Customizer.
+- **Setup page** (**Appearance → Atelier Noir Setup**): plugin checklist and one-click demo content.
+- **Open-source typography**, self-hosted: [Outfit](https://fonts.google.com/specimen/Outfit) for headings, [Inter](https://fonts.google.com/specimen/Inter) for body text (SIL Open Font License).
 - Translation-ready, PHP 7.4+, no build step.
 
 ## Requirements
@@ -72,7 +75,7 @@ Be clear on what you get before you start:
 | What | Where you edit it |
 | --- | --- |
 | Colors, typography, logo, display mode | **Customize → Atelier Noir — …** sections |
-| Home hero video and title, founder biography | **Customize → Atelier Noir — Home** sections |
+| Home headline, accent line and buttons | `template-parts/home-landing.php` and **Customize → Atelier Noir — Home** |
 | Services slides, contact page, legal pages | **Customize → Atelier Noir — Services / Contact / Legal** |
 | Header, menu overlay, footer, loader | **Customize → Atelier Noir — Menu overlay / Footer / Loader** |
 | Demo pages built with Elementor | Elementor editor (free version, drag and drop) |
@@ -113,6 +116,6 @@ Atelier Noir and Atelier Noir Core are free software, released under the [GNU Ge
 
 ## Author
 
-Designed and developed by **Wilfread Essomba** — [LinkedIn](https://www.linkedin.com/in/wilfreadessomba/).
+Designed and developed by **Wilfread Essomba** — [LinkedIn](https://www.linkedin.com/in/wilfreadessomba/) · [Instagram](https://www.instagram.com/wilfreadessomba) · [TikTok](https://www.tiktok.com/@with_ead) · wilfreadessomba@gmail.com.
 
 If the theme helps you, a ⭐ on GitHub is the best way to say thanks.
