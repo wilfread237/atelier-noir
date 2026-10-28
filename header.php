@@ -35,14 +35,6 @@ $skip_link_url    = apply_filters( 'hello_elementor_skip_link_url', '#content' )
 <?php } ?>
 
 <?php
-	if ( atelier_noir_force_theme_header_on_wc() ) {
-	if ( hello_elementor_display_header_footer() ) {
-		get_template_part( 'template-parts/dynamic-header' );
-	}
-} elseif ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) {
-	if ( hello_elementor_display_header_footer() ) {
-		if ( ! ( function_exists( 'atelier_noir_is_loader_page' ) && atelier_noir_is_loader_page() ) ) {
-			get_template_part( 'template-parts/dynamic-header' );
-		}
-	}
+if ( hello_elementor_display_header_footer() && ! ( function_exists( 'atelier_noir_is_loader_page' ) && atelier_noir_is_loader_page() ) ) {
+	get_template_part( 'template-parts/dynamic-header' );
 }

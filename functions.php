@@ -435,7 +435,7 @@ function atelier_noir_customizer_css() {
 	body { background-color: var(--color-bg) !important; color: var(--color-text); }
 	.button:not(.studio-nl-popup__submit), .search-form__submit { background: var(--studio-accent) !important; border-color: var(--studio-accent); color: #fff; }
 	.studio-nl-popup__submit, .studio-nl-popup__close { border: none !important; outline: none !important; box-shadow: none !important; }
-	body[data-header-theme="dark"] a:hover:not(.an-menu-overlay__link):not(.an-legal-overlay__tab):not(.an-footer-editorial__link) { color: inherit; opacity: 0.72; }
+	body[data-header-theme="dark"] a:hover:not(.an-menu-overlay__link):not(.an-legal-overlay__tab):not(.an-footer-editorial__link):not(.studio-header__logo):not(.an-landing__btn--solid) { color: inherit; opacity: 0.72; }
 	body:not([data-header-theme="dark"]) a:hover:not(.an-legal-overlay__tab):not(.an-footer-editorial__link):not(.an-menu-overlay__link) { color: var(--studio-accent); }
 	.an-footer-editorial__link:hover,
 	.an-footer-editorial__link:focus,

@@ -14,14 +14,36 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return array<int, array<string, string>>
  */
+/**
+ * Bundled backgrounds for the three studio services.
+ *
+ * @return array<string, string>
+ */
+function atelier_noir_service_stock_images() {
+	$base = get_stylesheet_directory_uri() . '/assets/images/services/';
+
+	return array(
+		'fashion-consulting' => $base . 'fashion-consulting.jpg',
+		'styling-branding'   => $base . 'styling-branding.jpg',
+		'events'             => $base . 'events.jpg',
+	);
+}
+
+/**
+ * Default services used on first install / demo import.
+ *
+ * @return array<int, array<string, string>>
+ */
 function atelier_noir_services_defaults() {
+	$images = atelier_noir_service_stock_images();
+
 	return array(
 		array(
 			'id'     => 'fashion-consulting',
 			'title'  => 'Fashion Consulting',
 			'text'   => '',
 			'type'   => 'image',
-			'image'  => '',
+			'image'  => $images['fashion-consulting'],
 			'video'  => '',
 			'poster' => '',
 		),
@@ -30,14 +52,14 @@ function atelier_noir_services_defaults() {
 			'title' => 'Styling & Branding',
 			'text'  => '',
 			'type'  => 'image',
-			'image' => '',
+			'image' => $images['styling-branding'],
 		),
 		array(
 			'id'    => 'events',
 			'title' => 'Events',
 			'text'  => '',
 			'type'  => 'image',
-			'image' => '',
+			'image' => $images['events'],
 		),
 	);
 }
@@ -97,6 +119,35 @@ function atelier_noir_parse_services_json( $json ) {
 }
 
 /**
+ * Use the bundled photo when a known service has no custom image.
+ *
+ * @param array<int, array<string, mixed>> $services Service rows.
+ * @return array<int, array<string, mixed>>
+ */
+function atelier_noir_fill_service_stock_images( $services ) {
+	$stock = atelier_noir_service_stock_images();
+
+	foreach ( $services as &$row ) {
+		$id    = isset( $row['id'] ) ? (string) $row['id'] : '';
+		$image = isset( $row['image'] ) ? (string) $row['image'] : '';
+		if ( '' !== $image || ! isset( $stock[ $id ] ) ) {
+			continue;
+		}
+		if ( 'video' === ( $row['type'] ?? '' ) && ! empty( $row['video'] ) ) {
+			continue;
+		}
+		$row['image'] = $stock[ $id ];
+		$row['type']  = 'image';
+		if ( empty( $row['poster'] ) ) {
+			$row['poster'] = $stock[ $id ];
+		}
+	}
+	unset( $row );
+
+	return $services;
+}
+
+/**
  * Services for template-services.php and contact form.
  *
  * @return array<int, array<string, mixed>>
@@ -105,7 +156,7 @@ function atelier_noir_get_services_list() {
 	$json = get_theme_mod( 'atelier_noir_services_json', '' );
 	$out  = atelier_noir_parse_services_json( is_string( $json ) ? $json : '' );
 	if ( $out ) {
-		return $out;
+		return atelier_noir_fill_service_stock_images( $out );
 	}
 
 	return atelier_noir_parse_services_json(

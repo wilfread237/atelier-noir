@@ -13,7 +13,6 @@ get_header();
 $wordmark  = (string) atelier_noir_get_theme_mod( 'an_footer_wordmark', strtoupper( atelier_noir_brand_name() ) );
 $cities    = (string) atelier_noir_get_theme_mod( 'an_contact_cities', 'PARIS · LONDON · NEW YORK' );
 $email     = atelier_noir_contact_email();
-$instagram = (string) atelier_noir_get_theme_mod( 'an_footer_instagram_url', 'https://instagram.com/' );
 $wm_desk   = atelier_noir_menu_watermark_desktop_url();
 $wm_mob    = atelier_noir_menu_watermark_mobile_url();
 $logo_url  = function_exists( 'atelier_noir_logo_url' ) ? atelier_noir_logo_url() : '';
@@ -44,13 +43,11 @@ $logo_url  = function_exists( 'atelier_noir_logo_url' ) ? atelier_noir_logo_url(
 		<?php endif; ?>
 		<p class="an-contact-page__cities"><?php echo esc_html( $cities ); ?></p>
 		<p class="an-contact-page__email">
-			<a href="<?php echo esc_url( 'mailto:' . $email ); ?>"><?php echo esc_html( strtoupper( $email ) ); ?></a>
+			<a href="<?php echo esc_url( 'mailto:' . $email ); ?>"><?php echo esc_html( $email ); ?></a>
 		</p>
-		<?php if ( $instagram ) : ?>
-			<p class="an-contact-page__instagram">
-				<a href="<?php echo esc_url( $instagram ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'INSTAGRAM', 'atelier-noir' ); ?></a>
-			</p>
-		<?php endif; ?>
+		<div class="an-contact-page__social">
+			<?php get_template_part( 'template-parts/social', 'links' ); ?>
+		</div>
 	</div>
 
 </main>

@@ -60,4 +60,24 @@
 			toggle.focus();
 		}
 	} );
+
+	var origin = header ? header.querySelector( ".studio-header__origin" ) : null;
+	if ( origin ) {
+		var lastY = window.scrollY;
+		var desktop = window.matchMedia( "(min-width: 901px)" );
+
+		function syncOrigin() {
+			var y = window.scrollY;
+			var goingDown = y > lastY && y > 32;
+			if ( desktop.matches && goingDown ) {
+				header.classList.add( "is-origin-hidden" );
+			} else if ( ! desktop.matches || y < lastY || y <= 8 ) {
+				header.classList.remove( "is-origin-hidden" );
+			}
+			lastY = y;
+		}
+
+		window.addEventListener( "scroll", syncOrigin, { passive: true } );
+		desktop.addEventListener( "change", syncOrigin );
+	}
 } )();

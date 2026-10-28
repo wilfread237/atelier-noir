@@ -156,7 +156,7 @@ body.page-template-template-services-studio .studio-footer {
 }
 
 .studio-service-panel__title {
-	text-transform: uppercase;
+	text-transform: lowercase;
 	text-align: center !important;
 }
 

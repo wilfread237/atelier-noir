@@ -596,19 +596,20 @@ function atelier_noir_typography_css() {
 	$h = get_theme_mod( 'atelier_noir_font_heading', 'Outfit' );
 	$b = get_theme_mod( 'atelier_noir_font_body', 'Inter' );
 
-	$h_stack = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-	$b_stack = $h_stack;
+	$sans    = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+	$h_stack = $sans;
+	$b_stack = $sans;
 
 	if ( $h && 'System' !== $h ) {
-		$h_stack = '"' . esc_attr( $h ) . '", "Times New Roman", serif';
+		$h_stack = '"' . esc_attr( $h ) . '", ' . $sans;
 	}
 	if ( $b && 'System' !== $b ) {
-		$b_stack = '"' . esc_attr( $b ) . '", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+		$b_stack = '"' . esc_attr( $b ) . '", ' . $sans;
 	}
 
-	$css = ':root { --studio-font-heading: ' . $h_stack . '; --studio-font-body: ' . $b_stack . '; }
-		h1, h2, h3, .section-title, .studio-site-loader__brand { font-family: var(--studio-font-heading); }
-		body { font-family: var(--studio-font-body); }';
+	$css = ':root { --studio-font-heading: ' . $h_stack . '; --studio-font-display: ' . $h_stack . '; --studio-font-body: ' . $b_stack . '; --studio-font-sub: ' . $b_stack . '; }
+		h1, h2, h3, h4, h5, h6, .section-title, .studio-site-loader__brand { font-family: var(--studio-font-heading); }
+		body, p, li, button, input, textarea, select, label { font-family: var(--studio-font-body); }';
 
 	wp_add_inline_style( 'atelier-noir', $css );
 }

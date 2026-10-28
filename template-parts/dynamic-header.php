@@ -32,16 +32,12 @@ $header_class  = 'studio-header' . ( $is_landing ? ' studio-header--landing' : '
 		</div>
 
 		<div class="studio-header__end">
-			<p class="studio-header__origin">
-				<?php
-				if ( $is_landing ) {
-					echo esc_html__( 'Made in Douala', 'atelier-noir' );
-					echo '<span class="studio-header__origin-dot" aria-hidden="true"></span>';
-				} else {
-					echo esc_html__( 'Made in Douala .', 'atelier-noir' );
-				}
-				?>
-			</p>
+			<?php if ( $is_landing ) : ?>
+				<p class="studio-header__origin">
+					<?php echo esc_html__( 'Made in Douala', 'atelier-noir' ); ?>
+					<span class="studio-header__origin-dot" aria-hidden="true"></span>
+				</p>
+			<?php endif; ?>
 			<button
 				class="studio-header__toggle"
 				type="button"
