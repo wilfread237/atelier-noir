@@ -54,6 +54,12 @@ if ( ! function_exists( 'wp_unslash' ) ) {
 	}
 }
 
+if ( ! function_exists( 'get_stylesheet_directory_uri' ) ) {
+	function get_stylesheet_directory_uri() {
+		return 'https://example.test/wp-content/themes/atelier-noir';
+	}
+}
+
 if ( ! function_exists( 'get_theme_mod' ) ) {
 	function get_theme_mod( $name, $default = false ) {
 		unset( $name );

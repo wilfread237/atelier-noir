@@ -10,17 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Default services used on first install / demo import.
- *
- * @return array<int, array<string, string>>
- */
-/**
  * Bundled backgrounds for the three studio services.
  *
  * @return array<string, string>
  */
 function atelier_noir_service_stock_images() {
-	$base = get_stylesheet_directory_uri() . '/assets/images/services/';
+	$base = function_exists( 'get_stylesheet_directory_uri' )
+		? get_stylesheet_directory_uri() . '/assets/images/services/'
+		: '';
 
 	return array(
 		'fashion-consulting' => $base . 'fashion-consulting.jpg',

@@ -3,7 +3,7 @@
  * Plugin Name:       Atelier Noir Core
  * Plugin URI:        https://github.com/wilfread237/atelier-noir
  * Description:       Companion plugin for the Atelier Noir theme: projects, SEO & Open Graph, newsletter popup (MailPoet), transactional emails, order tracking, currency, permalinks and one-click demo import.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Requires at least: 6.3
  * Requires PHP:      7.4
  * Author:            Wilfread Essomba
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ATELIER_NOIR_CORE_VERSION', '1.1.0' );
+define( 'ATELIER_NOIR_CORE_VERSION', '1.2.0' );
 define( 'ATELIER_NOIR_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ATELIER_NOIR_CORE_URL', plugin_dir_url( __FILE__ ) );
 

@@ -231,7 +231,7 @@ function atelier_noir_onboarding_assets( $hook_suffix ) {
 				'importing'      => __( 'Installing demo content…', 'atelier-noir' ),
 				'success'        => __( 'Demo installed successfully.', 'atelier-noir' ),
 				'successSummary' => __( 'Demo installed successfully. Your pages, menu and sample content are ready.', 'atelier-noir' ),
-				'error'          => __( 'Import failed. Check that Elementor is active, then try again.', 'atelier-noir' ),
+				'error'          => __( 'Import failed. Activate Atelier Noir Core, then try again.', 'atelier-noir' ),
 				'viewDetails'    => __( 'View details', 'atelier-noir' ),
 			),
 		)
@@ -256,7 +256,7 @@ function atelier_noir_onboarding_render_page() {
 			<p class="studio-setup__brand">Atelier Noir</p>
 			<h1><?php esc_html_e( 'Welcome — let’s set up your site', 'atelier-noir' ); ?></h1>
 			<p class="studio-setup__lead">
-				<?php esc_html_e( 'Install demo pages, menu, blog posts and WooCommerce products in one click. You can customize everything later in the Customizer, Elementor and WordPress admin.', 'atelier-noir' ); ?>
+				<?php esc_html_e( 'Install the pages, the menu and sample content. Visitors land on a black page: white type, one dark-orange line, Start project and Explore services.', 'atelier-noir' ); ?>
 			</p>
 		</header>
 
@@ -271,10 +271,11 @@ function atelier_noir_onboarding_render_page() {
 			<?php if ( 1 === $step ) : ?>
 				<h2><?php esc_html_e( 'What you get', 'atelier-noir' ); ?></h2>
 				<ul class="studio-setup__list">
-					<li><?php esc_html_e( 'Homepage with full-screen video hero, founder biography and shop preview', 'atelier-noir' ); ?></li>
-					<li><?php esc_html_e( 'Services, Contact (with booking tabs), Project blog and Shop pages', 'atelier-noir' ); ?></li>
-					<li><?php esc_html_e( 'English copy, USD currency, primary navigation menu', 'atelier-noir' ); ?></li>
-					<li><?php esc_html_e( 'Brand colors & typography (Outfit, Inter)', 'atelier-noir' ); ?></li>
+					<li><?php esc_html_e( 'A black homepage with centered white type, one dark-orange line, and the buttons Start project and Explore services', 'atelier-noir' ); ?></li>
+					<li><?php esc_html_e( 'Services as full-screen slides, titles in lowercase, with a photograph behind each service', 'atelier-noir' ); ?></li>
+					<li><?php esc_html_e( 'Projects as full-screen images, with an optional caption on each image', 'atelier-noir' ); ?></li>
+					<li><?php esc_html_e( 'Contact, legal pages, and a footer column for the theme author', 'atelier-noir' ); ?></li>
+					<li><?php esc_html_e( 'Outfit and Inter, a wordmark favicon, and an Open Graph preview for sharing the link', 'atelier-noir' ); ?></li>
 				</ul>
 				<p>
 					<a class="button button-primary button-hero" href="<?php echo esc_url( admin_url( 'themes.php?page=atelier-noir-setup&step=2' ) ); ?>">
@@ -307,7 +308,7 @@ function atelier_noir_onboarding_render_page() {
 				</p>
 			<?php elseif ( 3 === $step ) : ?>
 				<h2><?php esc_html_e( 'Import demo content', 'atelier-noir' ); ?></h2>
-				<p><?php esc_html_e( 'This creates or updates pages, applies Elementor layouts, rebuilds the menu, adds sample blog posts and WooCommerce products.', 'atelier-noir' ); ?></p>
+				<p><?php esc_html_e( 'This creates or updates the pages and the menu. The front page visitors see stays the black landing.', 'atelier-noir' ); ?></p>
 				<?php if ( $done ) : ?>
 					<div class="notice notice-success inline"><p><?php esc_html_e( 'Demo content was already installed. You can run the import again to refresh defaults.', 'atelier-noir' ); ?></p></div>
 				<?php endif; ?>
@@ -330,7 +331,7 @@ function atelier_noir_onboarding_render_page() {
 				</p>
 			<?php else : ?>
 				<h2><?php esc_html_e( 'You’re all set', 'atelier-noir' ); ?></h2>
-				<p><?php esc_html_e( 'Your site is ready. Customize the homepage video, founder portrait and copy from Appearance → Customize.', 'atelier-noir' ); ?></p>
+				<p><?php esc_html_e( 'Your site is ready. The homepage is the black landing. Edit services, projects and contact from the admin, and colors from Appearance → Customize.', 'atelier-noir' ); ?></p>
 				<p class="studio-setup__actions">
 					<a class="button button-primary" href="<?php echo esc_url( home_url( '/' ) ); ?>" target="_blank" rel="noopener">
 						<?php esc_html_e( 'View site', 'atelier-noir' ); ?>
