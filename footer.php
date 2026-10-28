@@ -72,10 +72,10 @@ endif;
 		</div>
 
 		<div class="studio-footer__nav-group">
-			<p class="studio-footer__nav-label"><?php echo esc_html( 'Auteur du theme' ); ?></p>
+			<p class="studio-footer__nav-label"><?php esc_html_e( 'Theme author', 'atelier-noir' ); ?></p>
 			<ul class="studio-footer__nav-list">
 				<li><a href="<?php echo esc_url( 'https://www.linkedin.com/in/wilfreadessomba' ); ?>" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-				<li><a href="<?php echo esc_url( 'mailto:wilfreadessomba@gmail.com' ); ?>"><?php echo esc_html( 'wilfreadessomba@gmail.com' ); ?></a></li>
+				<li><a href="<?php echo esc_url( 'mailto:wilfreadessomba@gmail.com' ); ?>"><?php echo esc_html( 'Contact Me' ); ?></a></li>
 				<li><a href="<?php echo esc_url( 'https://www.instagram.com/wilfreadessomba' ); ?>" target="_blank" rel="noopener noreferrer">Instagram</a></li>
 				<li><a href="<?php echo esc_url( 'https://www.tiktok.com/@with_ead' ); ?>" target="_blank" rel="noopener noreferrer">TikTok</a></li>
 			</ul>
