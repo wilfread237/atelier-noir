@@ -71,7 +71,7 @@ endif;
 			</ul>
 		</div>
 
-		<div class="studio-footer__nav-group">
+		<div class="studio-footer__nav-group studio-footer__nav-group--author">
 			<p class="studio-footer__nav-label"><?php esc_html_e( 'Theme author', 'atelier-noir' ); ?></p>
 			<ul class="studio-footer__nav-list">
 				<li><a href="<?php echo esc_url( 'https://www.linkedin.com/in/wilfreadessomba' ); ?>" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>

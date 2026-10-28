@@ -17,7 +17,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /** Titre OG/Twitter unique (nom de marque). */
 function atelier_noir_og_brand_title(): string {
-	return strtoupper( atelier_noir_brand_name() );
+	return 'atelier noir';
+}
+
+/**
+ * Description de partage : esprit, appartenance, orientation artistique.
+ */
+function atelier_noir_og_brand_description(): string {
+	return 'A creative studio rooted in spirit, ethnic belonging and a fierce artistic vision. Identities, images and ceremonies that carry lineage.';
 }
 
 /**
@@ -142,7 +149,15 @@ add_filter(
 add_filter(
 	'wpseo_opengraph_desc',
 	static function () {
-		return '';
+		return atelier_noir_og_brand_description();
+	},
+	999
+);
+
+add_filter(
+	'wpseo_metadesc',
+	static function () {
+		return atelier_noir_og_brand_description();
 	},
 	999
 );
@@ -150,7 +165,7 @@ add_filter(
 add_filter(
 	'wpseo_twitter_description',
 	static function () {
-		return '';
+		return atelier_noir_og_brand_description();
 	},
 	999
 );
@@ -175,9 +190,9 @@ add_filter(
 		}
 
 		$presentation->open_graph_title       = atelier_noir_og_brand_title();
-		$presentation->open_graph_description = '';
+		$presentation->open_graph_description = atelier_noir_og_brand_description();
 		$presentation->twitter_title          = atelier_noir_og_brand_title();
-		$presentation->twitter_description    = '';
+		$presentation->twitter_description    = atelier_noir_og_brand_description();
 
 		if ( atelier_noir_force_og_default_image() ) {
 			$url = atelier_noir_resolve_og_image();
@@ -263,13 +278,17 @@ add_action(
 		}
 
 		printf(
+			'<meta property="og:description" content="%s" />' . "\n" .
 			'<meta property="og:image" content="%s" />' . "\n" .
 			'<meta property="og:image:width" content="%d" />' . "\n" .
 			'<meta property="og:image:height" content="%d" />' . "\n" .
+			'<meta name="twitter:description" content="%s" />' . "\n" .
 			'<meta name="twitter:image" content="%s" />' . "\n",
+			esc_attr( atelier_noir_og_brand_description() ),
 			esc_url( (string) $payload['url'] ),
 			(int) $payload['width'],
 			(int) $payload['height'],
+			esc_attr( atelier_noir_og_brand_description() ),
 			esc_url( (string) $payload['url'] )
 		);
 	},
@@ -310,7 +329,7 @@ add_filter(
 			return $tags;
 		}
 		$tags['og:title']       = atelier_noir_og_brand_title();
-		$tags['og:description'] = '';
+		$tags['og:description'] = atelier_noir_og_brand_description();
 		$image                  = atelier_noir_resolve_og_image();
 		if ( '' !== $image ) {
 			$tags['og:image'] = $image;
@@ -336,15 +355,21 @@ add_action(
 		printf(
 			'<meta property="og:type" content="website">' . "\n" .
 			'<meta property="og:title" content="%s">' . "\n" .
+			'<meta property="og:description" content="%s">' . "\n" .
 			'<meta property="og:image" content="%s">' . "\n" .
 			'<meta property="og:image:width" content="1200">' . "\n" .
 			'<meta property="og:image:height" content="630">' . "\n" .
+			'<meta name="description" content="%s">' . "\n" .
 			'<meta name="twitter:card" content="summary_large_image">' . "\n" .
 			'<meta name="twitter:title" content="%s">' . "\n" .
+			'<meta name="twitter:description" content="%s">' . "\n" .
 			'<meta name="twitter:image" content="%s">' . "\n",
 			esc_attr( atelier_noir_og_brand_title() ),
+			esc_attr( atelier_noir_og_brand_description() ),
 			esc_url( $url ),
+			esc_attr( atelier_noir_og_brand_description() ),
 			esc_attr( atelier_noir_og_brand_title() ),
+			esc_attr( atelier_noir_og_brand_description() ),
 			esc_url( $url )
 		);
 	},

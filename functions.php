@@ -743,7 +743,9 @@ function atelier_noir_body_header_theme() {
 
 	$theme = 'dark';
 
-	if ( function_exists( 'atelier_noir_get_theme_mod' ) && ! atelier_noir_get_theme_mod( 'site_black_background', true ) ) {
+	if ( function_exists( 'atelier_noir_is_legal_document_page' ) && atelier_noir_is_legal_document_page() ) {
+		$theme = 'light';
+	} elseif ( function_exists( 'atelier_noir_get_theme_mod' ) && ! atelier_noir_get_theme_mod( 'site_black_background', true ) ) {
 		$theme = '';
 	}
 

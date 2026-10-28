@@ -74,6 +74,7 @@ function atelier_noir_get_project_sections( $post_id ) {
 			'type'          => $type,
 			'url'           => $url,
 			'attachment_id' => $att,
+			'text'          => isset( $row['text'] ) ? sanitize_textarea_field( (string) $row['text'] ) : '',
 		);
 	}
 	return $out;
@@ -189,7 +190,12 @@ function atelier_noir_project_sections_metabox_render( $post ) {
 						'<option value="video"' + (row.type==='video'?' selected':'') + '>Video</option>' +
 					'</select>' +
 					' <button type="button" class="button an-pick-media">Choose from media library</button>' +
-					' <button type="button" class="button-link-delete an-remove-section" style="margin-left:8px">Remove</button>';
+					' <button type="button" class="button-link-delete an-remove-section" style="margin-left:8px">Remove</button>' +
+					'<textarea name="an_project_section_text[]" rows="3" style="width:100%;margin-top:8px" placeholder="Text on this image (optional)"></textarea>';
+				wrap.querySelector('textarea').value = row.text || '';
+				wrap.querySelector('textarea').addEventListener('input', function(){
+					data[i].text = this.value;
+				});
 
 				wrap.querySelector('.an-pick-media').addEventListener('click', function(){
 					var type = wrap.querySelector('select').value;
@@ -231,9 +237,10 @@ function atelier_noir_project_sections_save( $post_id ) {
 	if ( ! current_user_can( 'edit_post', $post_id ) ) {
 		return;
 	}
-	$urls   = isset( $_POST['an_project_section_url'] ) ? (array) wp_unslash( $_POST['an_project_section_url'] ) : array();
-	$types  = isset( $_POST['an_project_section_type'] ) ? (array) wp_unslash( $_POST['an_project_section_type'] ) : array();
+	$urls    = isset( $_POST['an_project_section_url'] ) ? (array) wp_unslash( $_POST['an_project_section_url'] ) : array();
+	$types   = isset( $_POST['an_project_section_type'] ) ? (array) wp_unslash( $_POST['an_project_section_type'] ) : array();
 	$att_ids = isset( $_POST['an_project_section_attachment_id'] ) ? (array) wp_unslash( $_POST['an_project_section_attachment_id'] ) : array();
+	$texts   = isset( $_POST['an_project_section_text'] ) ? (array) wp_unslash( $_POST['an_project_section_text'] ) : array();
 	$out    = array();
 	foreach ( $urls as $i => $url ) {
 		$url = esc_url_raw( trim( (string) $url ) );
@@ -258,6 +265,7 @@ function atelier_noir_project_sections_save( $post_id ) {
 			'type'          => $type,
 			'url'           => $url,
 			'attachment_id' => $att_id,
+			'text'          => isset( $texts[ $i ] ) ? sanitize_textarea_field( (string) $texts[ $i ] ) : '',
 		);
 	}
 	update_post_meta( $post_id, '_an_project_sections', wp_json_encode( $out, JSON_UNESCAPED_UNICODE ) );

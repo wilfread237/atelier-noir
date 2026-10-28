@@ -54,6 +54,23 @@
 	opacity: 1;
 }
 
+.studio-header--on-light .studio-header__logo,
+.studio-header--on-light .an-wordmark {
+	color: #000;
+}
+
+.studio-header--on-light .studio-header__toggle {
+	color: #000 !important;
+}
+
+.studio-header--on-light .studio-header__logo:hover,
+.studio-header--on-light .studio-header__logo:focus-visible,
+.studio-header--on-light .studio-header__logo:hover .an-wordmark,
+.studio-header--on-light .studio-header__logo:focus-visible .an-wordmark {
+	color: rgba(0, 0, 0, 0.55);
+	opacity: 1;
+}
+
 .an-wordmark {
 	display: flex;
 	flex-direction: column;

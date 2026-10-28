@@ -77,7 +77,7 @@ if ( $pattern_url ) {
 	<?php else : ?>
 	<div class="an-projects-feed" aria-label="<?php esc_attr_e( 'Projects', 'atelier-noir' ); ?>">
 		<?php foreach ( $feed as $i => $section ) : ?>
-			<section class="an-projects-feed__section" aria-hidden="true">
+			<section class="an-projects-feed__section">
 				<?php if ( 'video' === $section['type'] ) : ?>
 					<video class="an-projects-feed__media" autoplay muted loop playsinline>
 						<source src="<?php echo esc_url( $section['url'] ); ?>" type="video/mp4">
@@ -86,10 +86,13 @@ if ( $pattern_url ) {
 					<img
 						class="an-projects-feed__media"
 						src="<?php echo esc_url( $section['url'] ); ?>"
-						alt=""
+						alt="<?php echo esc_attr( $section['text'] ?? '' ); ?>"
 						loading="<?php echo 0 === $i ? 'eager' : 'lazy'; ?>"
 						decoding="async"
 					>
+				<?php endif; ?>
+				<?php if ( ! empty( $section['text'] ) ) : ?>
+					<p class="an-projects-feed__caption"><?php echo esc_html( $section['text'] ); ?></p>
 				<?php endif; ?>
 			</section>
 		<?php endforeach; ?>

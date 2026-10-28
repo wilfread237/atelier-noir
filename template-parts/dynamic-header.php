@@ -10,9 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $use_editorial = function_exists( 'atelier_noir_use_editorial_menu' ) && atelier_noir_use_editorial_menu();
 $is_landing    = is_front_page() && ! is_home();
-$header_class  = 'studio-header' . ( $is_landing ? ' studio-header--landing' : '' );
+$on_light      = function_exists( 'atelier_noir_is_legal_document_page' ) && atelier_noir_is_legal_document_page();
+$header_class  = 'studio-header' . ( $is_landing ? ' studio-header--landing' : '' ) . ( $on_light ? ' studio-header--on-light' : '' );
+$header_theme  = $on_light ? 'light' : 'dark';
 ?>
-<header id="site-header" class="<?php echo esc_attr( $header_class ); ?>" role="banner" data-header-theme="dark">
+<header id="site-header" class="<?php echo esc_attr( $header_class ); ?>" role="banner" data-header-theme="<?php echo esc_attr( $header_theme ); ?>">
 	<div class="studio-header__inner">
 		<div class="studio-header__brand">
 			<?php

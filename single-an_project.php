@@ -21,7 +21,10 @@ while ( have_posts() ) :
 						<source src="<?php echo esc_url( $section['url'] ); ?>" type="video/mp4">
 					</video>
 				<?php else : ?>
-					<img class="an-project-single__media" src="<?php echo esc_url( $section['url'] ); ?>" alt="" loading="<?php echo 0 === $i ? 'eager' : 'lazy'; ?>" decoding="async">
+					<img class="an-project-single__media" src="<?php echo esc_url( $section['url'] ); ?>" alt="<?php echo esc_attr( $section['text'] ?? '' ); ?>" loading="<?php echo 0 === $i ? 'eager' : 'lazy'; ?>" decoding="async">
+				<?php endif; ?>
+				<?php if ( ! empty( $section['text'] ) ) : ?>
+					<p class="an-project-single__caption"><?php echo esc_html( $section['text'] ); ?></p>
 				<?php endif; ?>
 			</section>
 		<?php endforeach; ?>
