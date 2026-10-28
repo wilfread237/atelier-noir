@@ -23,9 +23,6 @@ $copyright = function_exists( 'atelier_noir_format_copyright' )
 	: (string) atelier_noir_get_theme_mod( 'an_footer_copyright', gmdate( 'Y' ) . ' ' . strtoupper( atelier_noir_brand_name() ) . '. ALL RIGHTS RESERVED' );
 $instagram = (string) atelier_noir_get_theme_mod( 'an_footer_instagram_url', 'https://instagram.com/' );
 $contact   = atelier_noir_contact_page_url();
-$logo_url  = function_exists( 'atelier_noir_footer_logo_desktop_url' )
-	? atelier_noir_footer_logo_desktop_url()
-	: ( function_exists( 'atelier_noir_logo_url' ) ? atelier_noir_logo_url() : '' );
 $wm_desk    = atelier_noir_menu_watermark_desktop_url();
 $wm_mob     = atelier_noir_menu_watermark_mobile_url();
 $pattern_url    = $wm_desk ?: $wm_mob;
@@ -52,13 +49,9 @@ if ( $watermark && $pattern_url ) {
 	<?php endif; ?>
 
 	<div class="an-footer-editorial__inner">
-		<?php if ( $logo_url ) : ?>
-			<div class="an-footer-editorial__logo">
-				<img class="an-footer-editorial__logo-img" src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( $wordmark ); ?>" decoding="async">
-			</div>
-		<?php else : ?>
-			<p class="an-footer-editorial__wordmark"><?php echo esc_html( $wordmark ); ?></p>
-		<?php endif; ?>
+		<div class="an-footer-editorial__logo">
+			<?php atelier_noir_render_wordmark( 'an-wordmark an-wordmark--footer' ); ?>
+		</div>
 
 		<p class="an-footer-editorial__copy"><?php echo esc_html( $copyright ); ?></p>
 

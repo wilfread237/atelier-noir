@@ -23,6 +23,21 @@
 
 /* ── Col 1 — Marque ───────────────────────────────────────────────────────── */
 
+.studio-footer__logo {
+	display: inline-flex;
+	margin: 0 0 1.25rem;
+	color: #f5f3ef;
+	text-decoration: none;
+}
+
+.an-wordmark--footer {
+	color: #f5f3ef;
+}
+
+.an-wordmark--footer .an-wordmark__large {
+	font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
 .studio-footer__wordmark {
 	font-size:      2.2rem;
 	font-weight:    300;

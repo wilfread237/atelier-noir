@@ -42,7 +42,9 @@ else :
 			&& ! atelier_noir_is_elementor_editor_or_preview()
 			&& ! atelier_noir_page_built_with_elementor( $page_id );
 
-		if ( $use_customizer_block ) {
+		if ( ! atelier_noir_is_elementor_editor_or_preview() ) {
+			get_template_part( 'template-parts/home', 'landing' );
+		} elseif ( $use_customizer_block ) {
 			get_template_part( 'template-parts/home', 'customizer' );
 			// Même logique que Contact / Services : the_content() présent si Elementor est installé (éditeur / premier enregistrement).
 			if ( class_exists( '\Elementor\Plugin' ) ) {

@@ -18,8 +18,52 @@
 	padding: 0 clamp(1.25rem, 4vw, 3rem);
 }
 
-.studio-header__toggle {
+.studio-header__end {
 	margin-left: auto;
+	display: flex;
+	align-items: center;
+	gap: clamp(0.65rem, 1.6vw, 1.15rem);
+}
+
+.studio-header__origin {
+	margin: 0;
+	font-family: var(--studio-font-body, "Inter", sans-serif);
+	font-size: clamp(0.62rem, 1.3vw, 0.78rem);
+	font-weight: 400;
+	letter-spacing: 0.08em;
+	color: #fff;
+	white-space: nowrap;
+}
+
+.studio-header__logo {
+	text-decoration: none;
+	color: #fff;
+}
+
+.an-wordmark {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	line-height: 0.82;
+	color: inherit;
+	text-transform: none;
+}
+
+.an-wordmark__small {
+	font-family: var(--studio-font-heading, "Outfit", sans-serif);
+	font-size: 0.62rem;
+	font-weight: 400;
+	letter-spacing: 0.46em;
+	text-transform: lowercase !important;
+	margin-left: 0.12em;
+}
+
+.an-wordmark__large {
+	font-family: var(--studio-font-heading, "Outfit", sans-serif);
+	font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+	font-weight: 500;
+	letter-spacing: -0.045em;
+	text-transform: lowercase !important;
 }
 
 .studio-header__toggle {
@@ -38,6 +82,12 @@
 	transition: color 0.35s ease;
 }
 
+.studio-header__toggle {
+	align-items: flex-end;
+	gap: 7px;
+	width: 34px;
+}
+
 .studio-header__toggle-bar {
 	display: block;
 	width: 22px;
@@ -45,6 +95,10 @@
 	background: currentColor;
 	border-radius: 2px;
 	transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.studio-header__toggle-bar:first-child {
+	width: 14px;
 }
 
 .studio-header__toggle:not(.studio-header__toggle--vertical)[aria-expanded="true"] .studio-header__toggle-bar:nth-child(1) {

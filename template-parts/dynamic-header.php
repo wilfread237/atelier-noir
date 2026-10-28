@@ -9,9 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $use_editorial = function_exists( 'atelier_noir_use_editorial_menu' ) && atelier_noir_use_editorial_menu();
-$menu_icon     = function_exists( 'atelier_noir_menu_icon_url' ) ? atelier_noir_menu_icon_url() : '';
+$is_landing    = is_front_page() && ! is_home();
+$header_class  = 'studio-header' . ( $is_landing ? ' studio-header--landing' : '' );
 ?>
-<header id="site-header" class="studio-header" role="banner" data-header-theme="dark">
+<header id="site-header" class="<?php echo esc_attr( $header_class ); ?>" role="banner" data-header-theme="dark">
 	<div class="studio-header__inner">
 		<div class="studio-header__brand">
 			<?php
@@ -30,26 +31,28 @@ $menu_icon     = function_exists( 'atelier_noir_menu_icon_url' ) ? atelier_noir_
 			?>
 		</div>
 
-		<button
-			class="studio-header__toggle<?php echo ( $use_editorial && $menu_icon ) ? ' studio-header__toggle--vertical' : ''; ?>"
-			type="button"
-			aria-expanded="false"
-			aria-controls="studio-mobile-menu"
-			aria-label="<?php esc_attr_e( 'Open menu', 'atelier-noir' ); ?>"
-		>
-			<?php if ( $use_editorial && $menu_icon ) : ?>
-				<img
-					class="studio-header__toggle-icon"
-					src="<?php echo esc_url( $menu_icon ); ?>"
-					alt=""
-					decoding="async"
-				>
-			<?php else : ?>
+		<div class="studio-header__end">
+			<p class="studio-header__origin">
+				<?php
+				if ( $is_landing ) {
+					echo esc_html__( 'Made in Douala', 'atelier-noir' );
+					echo '<span class="studio-header__origin-dot" aria-hidden="true"></span>';
+				} else {
+					echo esc_html__( 'Made in Douala .', 'atelier-noir' );
+				}
+				?>
+			</p>
+			<button
+				class="studio-header__toggle"
+				type="button"
+				aria-expanded="false"
+				aria-controls="studio-mobile-menu"
+				aria-label="<?php esc_attr_e( 'Open menu', 'atelier-noir' ); ?>"
+			>
 				<span class="studio-header__toggle-bar"></span>
 				<span class="studio-header__toggle-bar"></span>
-				<span class="studio-header__toggle-bar"></span>
-			<?php endif; ?>
-		</button>
+			</button>
+		</div>
 	</div>
 </header>
 

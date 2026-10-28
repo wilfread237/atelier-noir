@@ -13,16 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 $delay_ms     = max( 0, (int) atelier_noir_get_theme_mod( 'an_loader_delay_ms', 7000 ) );
 $skip_loader  = (bool) atelier_noir_get_theme_mod( 'an_loader_disable', false );
 $redirect_url = atelier_noir_loader_redirect_url();
-// Même visuel sur tous les breakpoints : logo principal + pattern (maquette LOADER).
-$loader_img   = atelier_noir_resolve_media_mod( 'an_loader_desktop_attachment', 'an_loader_desktop_url', 'loader-desktop.png' );
-$pattern_url  = function_exists( 'atelier_noir_brand_asset_uri' )
-	? atelier_noir_brand_asset_uri( 'pattern-gris-translucide.png' )
-	: '';
-$wordmark_url = atelier_noir_resolve_media_mod(
-	'an_loader_wordmark_attachment',
-	'an_loader_wordmark_url',
-	'logo-header-desktop.png'
-);
 $video_att    = absint( atelier_noir_get_theme_mod( 'an_loader_video_attachment', 0 ) );
 $video_url    = $video_att ? (string) wp_get_attachment_url( $video_att ) : '';
 $has_video    = '' !== $video_url;
@@ -56,32 +46,10 @@ if ( $skip_loader ) {
 			<source src="<?php echo esc_url( $video_url ); ?>" type="<?php echo esc_attr( get_post_mime_type( $video_att ) ?: 'video/mp4' ); ?>">
 		</video>
 	<?php else : ?>
-		<img
-			class="an-loader-page__media an-loader-page__media--image an-loader-page__media--desktop-only"
-			src="<?php echo esc_url( $loader_img ); ?>"
-			alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
-			width="1440"
-			height="810"
-			decoding="async"
-			fetchpriority="high"
-		>
-		<div
-			class="an-loader-page__scene an-loader-page__scene--mobile-only"
-			<?php if ( $pattern_url ) : ?>
-				style="<?php echo esc_attr( '--an-loader-pattern: url(' . esc_url( $pattern_url ) . ');' ); ?>"
-			<?php endif; ?>
-		>
-			<?php if ( $wordmark_url ) : ?>
-				<img
-					class="an-loader-page__wordmark"
-					src="<?php echo esc_url( $wordmark_url ); ?>"
-					alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
-					width="1024"
-					height="103"
-					decoding="async"
-					fetchpriority="high"
-				>
-			<?php endif; ?>
+		<div class="an-loader-scene" style="<?php echo esc_attr( '--an-loader-ms:' . (int) $delay_ms . 'ms;' ); ?>">
+			<?php atelier_noir_render_wordmark( 'an-wordmark an-wordmark--loader' ); ?>
+			<p class="an-loader-scene__origin"><?php echo esc_html__( 'Made in Douala .', 'atelier-noir' ); ?></p>
+			<span class="an-loader-scene__rule" aria-hidden="true"></span>
 		</div>
 	<?php endif; ?>
 

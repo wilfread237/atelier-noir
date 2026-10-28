@@ -516,6 +516,16 @@ function atelier_noir_enqueue_assets() {
 		}
 	}
 
+	$landing_css = get_stylesheet_directory() . '/assets/css/home-landing.css';
+	if ( is_front_page() && file_exists( $landing_css ) && ! ( function_exists( 'atelier_noir_is_loader_page' ) && atelier_noir_is_loader_page() ) ) {
+		wp_enqueue_style(
+			'atelier-noir-home-landing',
+			get_stylesheet_directory_uri() . '/assets/css/home-landing.css',
+			array( 'atelier-noir' ),
+			(string) filemtime( $landing_css )
+		);
+	}
+
 	$use_php_sections_layout = is_page_template( 'template-contact.php' )
 		|| is_page_template( 'template-services.php' )
 		|| is_page_template( 'template-home-php-sections.php' );

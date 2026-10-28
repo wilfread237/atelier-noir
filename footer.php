@@ -23,7 +23,10 @@ endif;
 
 		<!-- Col 1 — Marque -->
 		<div class="studio-footer__brand">
-			<p class="studio-footer__wordmark"><?php echo esc_html( atelier_noir_brand_name() ); ?></p>
+			<a class="studio-footer__logo" href="<?php echo esc_url( function_exists( 'atelier_noir_home_url' ) ? atelier_noir_home_url() : home_url( '/' ) ); ?>" rel="home">
+				<?php atelier_noir_render_wordmark( 'an-wordmark an-wordmark--footer' ); ?>
+				<span class="screen-reader-text"><?php echo esc_html( atelier_noir_brand_name() ); ?></span>
+			</a>
 			<p class="studio-footer__tagline">
 				<?php echo esc_html( atelier_noir_footer_mod( 'atelier_noir_footer_tagline', __( 'Fashion — Creative identity — Art direction', 'atelier-noir' ) ) ); ?>
 			</p>

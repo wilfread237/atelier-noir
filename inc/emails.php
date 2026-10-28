@@ -13,7 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Contact, services, claims, general inquiries.
  */
 function atelier_noir_email_contact() {
-	return apply_filters( 'atelier_noir_email_contact', (string) get_option( 'admin_email' ) );
+	$stored = (string) get_theme_mod( 'atelier_noir_public_email', '' );
+	$email  = is_email( $stored ) ? $stored : 'example@website.com';
+
+	return apply_filters( 'atelier_noir_email_contact', $email );
 }
 
 /**

@@ -9,10 +9,10 @@
 	var overlay = document.getElementById( "studio-mobile-menu" );
 	var closer  = overlay ? overlay.querySelector( ".studio-mobile-menu__close" ) : null;
 
-	if ( header ) {
+	if ( header && header.getAttribute( "data-header-theme" ) !== "light" ) {
 		header.setAttribute( "data-header-theme", "dark" );
+		document.body.setAttribute( "data-header-theme", "dark" );
 	}
-	document.body.setAttribute( "data-header-theme", "dark" );
 
 	if ( ! toggle || ! overlay ) {
 		return;

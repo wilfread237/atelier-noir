@@ -139,27 +139,30 @@ function atelier_noir_logo_mobile_url() {
 }
 
 /**
- * Render site logo markup (single responsive image).
+ * Two-line wordmark: small "atelier", large "noir."
+ *
+ * @param string $class Wrapper class.
+ */
+function atelier_noir_render_wordmark( $class = 'an-wordmark' ) {
+	?>
+	<span class="<?php echo esc_attr( $class ); ?>">
+		<span class="an-wordmark__small"><?php echo esc_html__( 'atelier', 'atelier-noir' ); ?></span>
+		<span class="an-wordmark__large"><?php echo esc_html__( 'noir.', 'atelier-noir' ); ?></span>
+	</span>
+	<?php
+}
+
+/**
+ * Render the site wordmark as a home link.
+ *
+ * @param string $class Link class.
  */
 function atelier_noir_render_logo( $class = 'studio-header__logo' ) {
-	$home = function_exists( 'atelier_noir_home_url' ) ? atelier_noir_home_url() : home_url( '/home/' );
-	$logo = atelier_noir_logo_url();
-	if ( '' === $logo ) {
-		?>
-		<a class="<?php echo esc_attr( $class ); ?> studio-header__site-name" href="<?php echo esc_url( $home ); ?>" rel="home">
-			<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
-		</a>
-		<?php
-		return;
-	}
+	$home = function_exists( 'atelier_noir_home_url' ) ? atelier_noir_home_url() : home_url( '/' );
 	?>
 	<a class="<?php echo esc_attr( $class ); ?>" href="<?php echo esc_url( $home ); ?>" rel="home">
-		<img
-			class="studio-logo"
-			src="<?php echo esc_url( $logo ); ?>"
-			alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
-			decoding="async"
-		>
+		<?php atelier_noir_render_wordmark(); ?>
+		<span class="screen-reader-text"><?php echo esc_html( atelier_noir_brand_name() ); ?></span>
 	</a>
 	<?php
 }
