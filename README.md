@@ -9,7 +9,7 @@
 ![Atelier Noir](screenshot.png)
 
 - **Download:** [atelier-noir.zip](https://github.com/wilfread237/atelier-noir/releases/latest/download/atelier-noir.zip) (theme + companion plugin). The zip is published when a `v*` tag matches `Version` in `style.css`. Until that first release, clone the repository.
-- **Live demo:** _coming soon_
+- **Live demo:** [atelier-noir.42web.io](https://atelier-noir.42web.io/)
 
 ---
 
